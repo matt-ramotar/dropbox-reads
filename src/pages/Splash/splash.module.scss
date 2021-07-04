@@ -1,0 +1,26 @@
+@use '../../sass/theme' as t;
+
+.root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.splash {
+  width: 40vw;
+}
+
+.logo {
+  height: 60px;
+}
+
+.heading {
+  color: t.$color-gray-light;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: t.$color-background-accent;
+  margin-top: 20px;
+  color: t.$color-gray-light;
+}
