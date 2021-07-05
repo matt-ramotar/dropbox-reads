@@ -1,18 +1,16 @@
 import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
-import { Navigate, useRoutes } from "react-router";
-import routes from "./routes";
+import { useEffect, useState } from "react";
+import { useRoutes } from "react-router";
+import validateToken, { ValidateTokenSuccess } from "./lib/validateToken";
+import routes from "./routes.js";
 import "./sass/App.scss";
 import theme from "./theme";
-import generateRoutes from "./util/generateRoutes";
+import SafeUser from "./types/SafeUser";
 
-function App(): JSX.Element | null {
-  const routing = useRoutes([
-    ...generateRoutes(routes),
-    {
-      path: "*",
-      element: <Navigate to="/" />,
-    },
-  ]);
+function App({ user }: { user: SafeUser | null }): JSX.Element | null {
+  const isLoggedIn = Boolean(user);
+
+  const routing = useRoutes(routes(isLoggedIn));
 
   return (
     <ThemeProvider theme={theme}>
@@ -21,4 +19,27 @@ function App(): JSX.Element | null {
   );
 }
 
-export default App;
+export default function AppHoc(): JSX.Element | null {
+  const [isValidated, setIsValidated] = useState<boolean | null>(null);
+  const [safeUser, setSafeUser] = useState<SafeUser | null>(null);
+
+  useEffect(() => {
+    const localToken = localStorage.getItem("TOKEN");
+
+    if (localToken) validateTokenAsync(localToken);
+    else setIsValidated(false);
+
+    async function validateTokenAsync(localToken: string) {
+      try {
+        const { user }: ValidateTokenSuccess = await validateToken(localToken);
+        setSafeUser(user);
+        setIsValidated(true);
+      } catch (error) {
+        setIsValidated(false);
+      }
+    }
+  });
+
+  if (isValidated === null) return null;
+  return <App user={safeUser} />;
+}
