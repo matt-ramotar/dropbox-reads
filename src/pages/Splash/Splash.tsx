@@ -55,7 +55,7 @@ export default function Splash(): JSX.Element {
 
         <GoogleLogin
           clientId={GOOGLE_CLIENT_ID ?? ""}
-          buttonText="Log in with Google"
+          buttonText="Continue with Google"
           onSuccess={handleLogin}
           onFailure={handleLogin}
           cookiePolicy={"single_host_origin"}
