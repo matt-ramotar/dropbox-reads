@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import GoogleLogin, {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
@@ -16,30 +16,20 @@ export default function Splash(): JSX.Element {
   };
 
   return (
-    <Box>
-      <Typography>Dropbox Reads</Typography>
+    <Grid className={styles.grid}>
+      <Box className={styles.nav}>
+        <img src={logo} alt="Dropbox Reads logo" className={styles.logo} />
 
-      <img src={logo} alt="Dropbox Reads logo" className={styles.logo} />
-
-      <img src={splash} alt="Dropboxer reading" className={styles.splash} />
-
-      <Box>
-        <Button className={styles.button}>
-          <Typography>Log In</Typography>
-        </Button>
-
-        <Button className={styles.button}>
-          <Typography>Sign Up</Typography>
-        </Button>
+        <GoogleLogin
+          clientId={GOOGLE_CLIENT_ID ?? ""}
+          buttonText="Log in with Google"
+          onSuccess={handleLogin}
+          onFailure={handleLogin}
+          cookiePolicy={"single_host_origin"}
+        />
       </Box>
 
-      <GoogleLogin
-        clientId={GOOGLE_CLIENT_ID!}
-        buttonText="Log in with Google"
-        onSuccess={handleLogin}
-        onFailure={handleLogin}
-        cookiePolicy={"single_host_origin"}
-      />
-    </Box>
+      <img src={splash} alt="Dropboxer reading" className={styles.splash} />
+    </Grid>
   );
 }
