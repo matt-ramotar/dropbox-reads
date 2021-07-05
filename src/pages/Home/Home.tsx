@@ -2,12 +2,16 @@ import { Grid, Typography } from "@material-ui/core";
 import SafeUser from "../../types/SafeUser";
 import styles from "./home.module.scss";
 
-export default function Home({ user }: { user: SafeUser }): JSX.Element {
+interface Props {
+  user: SafeUser;
+}
+
+export default function Home(props: Props): JSX.Element {
   return (
     <Grid className={styles.grid}>
       <Typography>Home</Typography>
-      <Typography>{`Hey, ${user.firstName} ${user.lastName}!`}</Typography>
-      <Typography>{user.username}</Typography>
+      <Typography>{`Hey, ${props.user.firstName} ${props.user.lastName}!`}</Typography>
+      <Typography>{props.user.username}</Typography>
     </Grid>
   );
 }

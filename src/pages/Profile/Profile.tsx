@@ -47,7 +47,7 @@ export default function Profile(props: Props): JSX.Element {
   }
 
   return (
-    <Grid className={styles.grid}>
+    <Grid className={styles.root}>
       <Typography>Profile</Typography>
       {userProfile.safeUser.picture ? (
         <img src={userProfile.safeUser.picture} alt={userProfile.safeUser.username} />

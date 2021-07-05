@@ -1,11 +1,11 @@
-@use '../../sass/theme' as t;
+@use '../../theme' as t;
 
 .root {
   position: absolute;
   top: 0;
   width: 100vw;
   height: 75px;
-  background-color: t.$color-background-alt;
+  background-color: t.$color-background-white;
 
   padding: 5px 30px;
 
@@ -13,71 +13,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 2px 2px 5px t.$color-background-base;
+  box-shadow: 2px 2px 5px t.$color-background-main;
 
   flex-wrap: nowrap;
 }
 
-.text {
-  color: t.$color-gray-light;
-}
-
-.smallLogo {
-  width: 60px;
+img {
+  max-width: 100%;
   height: 60px;
-}
-
-.logo {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.right {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.icon__button {
-  padding: 0px 0px;
-  margin: 0px;
-  min-width: 30px;
-  max-width: 30px;
-
-  min-height: 30px;
-  max-height: 30px;
-
-  border-radius: 50%;
-
-  background-color: t.$color-fill-info;
-}
-
-.icon {
-  color: t.$color-gray-light;
-
-  text-align: center;
-}
-
-.menuItem__grid {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-.menuItem__text {
-  margin: 0px 10px;
-  font-weight: bold;
-}
-
-.icon__cog {
-  color: t.$color-background-alt-2;
-}
-
-.icon__angle {
-  color: t.$color-gray-light;
 }

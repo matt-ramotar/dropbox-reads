@@ -1,0 +1,19 @@
+@use '../../theme' as t;
+
+.root {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: t.$nav-height;
+  height: calc(100vh - t.$nav-height);
+  width: 100vw;
+}

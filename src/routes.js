@@ -1,57 +1,27 @@
 /* eslint-disable */
 
 import { Navigate } from "react-router-dom";
-import { MainLayout, SplashLayout } from "./layouts";
-import Explore from "./pages/Explore";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Splash from "./pages/Splash";
+import MainLayout from "./layouts/Main";
+import SplashLayout from "./layouts/Splash";
+import { ExplorePage, HomePage, ProfilePage, SplashPage } from "./util/pages";
 
 const routes = (isLoggedIn, user) => [
   {
     path: "/home",
-    element: isLoggedIn ? (
-      <>
-        <MainLayout />
-        <Home user={user} />
-      </>
-    ) : (
-      <Navigate to="/" />
-    ),
+    element: isLoggedIn ? <MainLayout user={user} pageName={HomePage} /> : <Navigate to="/" />,
   },
   {
     path: "/explore",
-    element: isLoggedIn ? (
-      <>
-        <MainLayout />
-        <Explore user={user} />
-      </>
-    ) : (
-      <Navigate to="/" />
-    ),
+    element: isLoggedIn ? <MainLayout user={user} pageName={ExplorePage} /> : <Navigate to="/" />,
   },
   {
     path: "/:username",
-    element: isLoggedIn ? (
-      <>
-        <MainLayout />
-        <Profile user={user} />
-      </>
-    ) : (
-      <Navigate to="/" />
-    ),
+    element: isLoggedIn ? <MainLayout user={user} pageName={ProfilePage} /> : <Navigate to="/" />,
   },
-
+  { path: "/login", element: <Navigate to="/" /> },
   {
     path: "/",
-    element: !isLoggedIn ? (
-      <>
-        <SplashLayout />
-        <Splash />
-      </>
-    ) : (
-      <Navigate to="/home" />
-    ),
+    element: !isLoggedIn ? <SplashLayout pageName={SplashPage} /> : <Navigate to="/home" />,
   },
 ];
 

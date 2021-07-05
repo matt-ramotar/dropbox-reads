@@ -1,9 +1,9 @@
 import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
 import { useRoutes } from "react-router";
+import "./App.scss";
 import validateToken, { ValidateTokenSuccess } from "./lib/validateToken";
 import routes from "./routes.js";
-import "./sass/App.scss";
 import theme from "./theme";
 import SafeUser from "./types/SafeUser";
 
