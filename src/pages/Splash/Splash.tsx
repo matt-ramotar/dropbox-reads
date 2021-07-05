@@ -1,8 +1,5 @@
 import { Box, Grid } from "@material-ui/core";
-import GoogleLogin, {
-  GoogleLoginResponse,
-  GoogleLoginResponseOffline,
-} from "react-google-login";
+import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login";
 import { extractUsername } from "../../helpers";
 import logo from "../../images/logo.png";
 import splash from "../../images/splash.png";
@@ -20,9 +17,7 @@ interface ProfileObj {
 }
 
 export default function Splash(): JSX.Element {
-  const handleLogin = async (
-    data: GoogleLoginResponse | GoogleLoginResponseOffline
-  ) => {
+  const handleLogin = async (data: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     if ("code" in data) return;
 
     const {
@@ -35,7 +30,7 @@ export default function Splash(): JSX.Element {
 
     const username = extractUsername(email);
 
-    const { user, token } = await continueWithGoogle(
+    const { token } = await continueWithGoogle(
       firstName,
       lastName,
       email,
@@ -44,8 +39,8 @@ export default function Splash(): JSX.Element {
       picture
     );
 
-    console.log("USER", user);
-    console.log("TOKEN", token);
+    localStorage.setItem("TOKEN", token);
+    window.location.reload();
   };
 
   return (
