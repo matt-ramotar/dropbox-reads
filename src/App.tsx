@@ -10,7 +10,7 @@ import SafeUser from "./types/SafeUser";
 function App({ user }: { user: SafeUser | null }): JSX.Element | null {
   const isLoggedIn = Boolean(user);
 
-  const routing = useRoutes(routes(isLoggedIn));
+  const routing = useRoutes(routes(isLoggedIn, user));
 
   return (
     <ThemeProvider theme={theme}>
@@ -38,7 +38,7 @@ export default function AppHoc(): JSX.Element | null {
         setIsValidated(false);
       }
     }
-  });
+  }, [setIsValidated]);
 
   if (isValidated === null) return null;
   return <App user={safeUser} />;
