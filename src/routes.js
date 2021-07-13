@@ -3,7 +3,7 @@
 import { Navigate } from "react-router-dom";
 import MainLayout from "./layouts/Main";
 import SplashLayout from "./layouts/Splash";
-import { ExplorePage, HomePage, ProfilePage, SplashPage } from "./util/pages";
+import { ExplorePage, HomePage, ProfilePage, SplashPage, AddBookFormPage } from "./util/pages";
 
 const routes = (isLoggedIn, user) => [
   {
@@ -23,6 +23,10 @@ const routes = (isLoggedIn, user) => [
     path: "/",
     element: !isLoggedIn ? <SplashLayout pageName={SplashPage} /> : <Navigate to="/home" />,
   },
+  {
+    path: "/add-book",
+    element: isLoggedIn ? <MainLayout user={user} pageName={AddBookFormPage} /> : <Navigate to="/add-book" />
+  }
 ];
 
 export default routes;
