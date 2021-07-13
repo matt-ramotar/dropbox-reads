@@ -25,7 +25,7 @@ const routes = (isLoggedIn, user) => [
   },
   {
     path: "/add-book",
-    element: isLoggedIn ? <MainLayout user={user} pageName={AddBookFormPage} /> : <Navigate to="/add-book" />
+    element: isLoggedIn ? <MainLayout user={user} pageName={AddBookFormPage} /> : <Navigate to="/" />
   }
 ];
 
