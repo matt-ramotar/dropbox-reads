@@ -1,12 +1,12 @@
 import axios, { AxiosResponse } from "axios";
-import UserProfile from "../types/UserProfile";
+import { GodUser } from "../types/GodUser";
 import { VERSION } from "../util/endpoints";
 import { API_URL } from "../util/secrets";
 
-export default async function fetchUserProfile(username: string): Promise<UserProfile> {
+export default async function fetchUserProfile(username: string): Promise<GodUser> {
   const response: AxiosResponse = await axios.get(buildUrl(username));
 
-  const data: UserProfile = response.data;
+  const data: GodUser = response.data;
 
   return data;
 }
