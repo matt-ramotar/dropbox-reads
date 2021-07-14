@@ -2,8 +2,8 @@ import { Grid, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { fetchUserProfile } from "../../lib";
+import { GodUser } from "../../types/GodUser";
 import SafeUser from "../../types/SafeUser";
-import UserProfile from "../../types/UserProfile";
 import styles from "./profile.module.scss";
 
 interface Props {
@@ -15,7 +15,7 @@ export default function Profile(props: Props): JSX.Element {
   const username = location.pathname.split("/")[1];
 
   const [isLoading, setIsLoading] = useState(true);
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  const [godUser, setGodUser] = useState<GodUser | null>(null);
 
   useEffect(() => {
     fetchUserProfileAsync(username);
@@ -23,12 +23,12 @@ export default function Profile(props: Props): JSX.Element {
     async function fetchUserProfileAsync(username: string) {
       try {
         const response = await fetchUserProfile(username);
-        setUserProfile(response);
+        setGodUser(response);
       } finally {
         setIsLoading(false);
       }
     }
-  }, [username, setUserProfile, fetchUserProfile]);
+  }, [username, setGodUser, fetchUserProfile]);
 
   if (isLoading) {
     return (
@@ -38,7 +38,7 @@ export default function Profile(props: Props): JSX.Element {
     );
   }
 
-  if (!userProfile) {
+  if (!godUser) {
     return (
       <Grid className={styles.grid}>
         <Typography>This account does not exist</Typography>
@@ -49,10 +49,10 @@ export default function Profile(props: Props): JSX.Element {
   return (
     <Grid className={styles.root}>
       <Typography>Profile</Typography>
-      {userProfile.safeUser.picture ? (
-        <img src={userProfile.safeUser.picture} alt={userProfile.safeUser.username} />
+      {godUser.picture ? (
+        <img src={godUser.picture} alt={godUser.username} />
       ) : null}
-      <Typography>{userProfile.safeUser.username}</Typography>
+      <Typography>{godUser.username}</Typography>
     </Grid>
   );
 }
