@@ -1,0 +1,28 @@
+@use '../../theme' as t;
+
+//.header {
+//    position:absolute;
+//    left:0; right:0;
+//    height: 92px;
+//}
+body {
+  height: 100%;
+  overflow: hidden;
+}
+.sidebar {
+    height: 100%;
+    position:fixed;
+    left:0;
+    width: 178px;
+}
+.main {
+  //height: 100%;
+  overflow-y: scroll;
+  position: absolute;
+    left:462px; top:107px; right:0; bottom:0;
+}
+//
+//.header { background: blue; }
+//.summary { background: red; }
+//.main { background: yellow; }
+//
