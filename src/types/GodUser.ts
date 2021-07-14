@@ -1,0 +1,40 @@
+import { Action } from "history";
+import { Book } from "./Book";
+import { Bookshelf } from "./Bookshelf";
+import { BookTag } from "./BookTag";
+import { BookTagUpvote } from "./BookTagUpvote";
+import { BookUpvote } from "./BookUpvote";
+import { Comment } from "./Comment";
+import { CommentReaction } from "./CommentReaction";
+import { Review } from "./Review";
+import { ReviewReaction } from "./ReviewReaction";
+import { ReviewUpvote } from "./ReviewUpvote";
+import { Role } from "./Role";
+import SafeUser from "./SafeUser";
+import { Tag } from "./Tag";
+
+export interface GodUser {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  username: string;
+  picture?: string;
+  role?: Role;
+  isLoggedIn?: boolean;
+  googleId: string;
+  usersFollowing?: SafeUser[];
+  usersFollowedBy?: SafeUser[];
+  tagsFollowing?: Tag[];
+  bookshelves?: Bookshelf[];
+  reviews?: Review[];
+  comments?: Comment[];
+  reviewUpvotes?: ReviewUpvote[];
+  reviewReactions?: ReviewReaction[];
+  commentReactions?: CommentReaction[];
+  booksAdded?: Book[];
+  bookTagsAdded?: BookTag[];
+  bookTagUpvotes?: BookTagUpvote[];
+  actions?: Action[];
+  bookUpvotes?: BookUpvote[];
+}
