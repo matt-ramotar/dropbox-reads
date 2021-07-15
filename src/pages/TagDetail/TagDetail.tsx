@@ -61,9 +61,7 @@ export default function TagDetail(props: Props): JSX.Element {
                 </Box>
             </Grid>
             <Grid className={styles.root}>
-                <Box className={styles.main}>
-                    {godTag.books?.map((book) => <BookCard key={book.id} user={props.user} book={book}/>)}
-                </Box>
+                {godTag.books?.map((book) => <BookCard key={book.id} user={props.user} book={book}/>)}
             </Grid>
         </Fragment>
     );
