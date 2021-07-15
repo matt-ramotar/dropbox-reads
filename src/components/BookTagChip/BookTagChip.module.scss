@@ -1,0 +1,13 @@
+@use "../../theme" as t;
+
+.root {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.primaryColor {
+    color: white;
+}
