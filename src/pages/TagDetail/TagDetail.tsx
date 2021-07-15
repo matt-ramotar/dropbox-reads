@@ -53,10 +53,10 @@ export default function TagDetail(): JSX.Element {
 
     return (
         <Grid className={styles.grid}>
-        <Typography>Tag Detail</Typography>
-        <Typography>{`Tag: ${godTag.tag}`}</Typography>
-        <Typography>Book List:</Typography>
-        <ul>{bookList}</ul>
+            <Typography>Tag Detail</Typography>
+            <Typography>{`Tag: ${godTag.tag}`}</Typography>
+            <Typography>Book List:</Typography>
+            <ul>{bookList}</ul>
         </Grid>
     );
 }
