@@ -1,0 +1,60 @@
+@use '../../theme' as t;
+
+.book {
+  background-color: t.$color-purple-light;
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.imgContainer {
+  min-height: 15em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.coverImg {
+  margin: 1em 0;
+  height: 90%;
+  width: 40%;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-4%);
+    cursor: pointer;
+  }
+}
+
+.infoDiv {
+  min-height: 15em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.5rem 1rem;
+}
+
+.bookDetails {
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.btnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
