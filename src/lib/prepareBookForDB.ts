@@ -23,6 +23,7 @@ export default async function prepareBookForDB(
     userId: user.id,
     googleId: book.id,
     title: book.volumeInfo.title,
+    description: book.volumeInfo.description,
     coverImage: book.volumeInfo.imageLinks.thumbnail,
     authorId,
     tagIds: [],
