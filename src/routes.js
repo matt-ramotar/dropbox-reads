@@ -3,7 +3,7 @@
 import { Navigate } from "react-router-dom";
 import MainLayout from "./layouts/Main";
 import SplashLayout from "./layouts/Splash";
-import { ExplorePage, HomePage, ProfilePage, SplashPage, AddBookFormPage } from "./util/pages";
+import { ExplorePage, HomePage, ProfilePage, SplashPage, AddBookFormPage, TagPage } from "./util/pages";
 
 const routes = (isLoggedIn, user) => [
   {
@@ -19,6 +19,11 @@ const routes = (isLoggedIn, user) => [
     element: isLoggedIn ? <MainLayout user={user} pageName={ProfilePage} /> : <Navigate to="/" />,
   },
   { path: "/login", element: <Navigate to="/" /> },
+  {
+    path:"/tags/:tagname",
+    element: isLoggedIn? <MainLayout user={user} pageName={TagPage} /> : <Navigate to="/" />,
+
+  },
   {
     path: "/",
     element: !isLoggedIn ? <SplashLayout pageName={SplashPage} /> : <Navigate to="/home" />,

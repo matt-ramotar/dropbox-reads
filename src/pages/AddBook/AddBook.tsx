@@ -3,7 +3,7 @@ import SafeUser from "../../types/SafeUser";
 import styles from "./AddBook.module.scss";
 import AddBookForm from "../../components/AddBookForm";
 
-export default function Explore({ user }: { user: SafeUser }): JSX.Element {
+export default function AddBook({ user }: { user: SafeUser }): JSX.Element {
     return (
         <Grid className={styles.grid} >
             <Typography>{`Hey, ${user.firstName} ${user.lastName}!`}</Typography>
