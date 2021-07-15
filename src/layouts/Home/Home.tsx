@@ -20,14 +20,14 @@ export default function Home(props: Props): JSX.Element {
 
   return (
     <Grid container className={styles.root}>
-        <Nav user={props.user} />
-        <SubmitABookCta user={props.user}/>
+      <Nav user={props.user} />
+      <SubmitABookCta user={props.user} />
 
       <Box className={styles.container}>
-        <SideNav user={props.user} tags={props.tags}/>
+        <SideNav user={props.user} tags={props.tags} />
 
         <Box className={styles.main}>
-          <Page user={props.user} books={props.books}/>
+          <Page user={props.user} books={props.books} />
         </Box>
       </Box>
     </Grid>
