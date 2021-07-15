@@ -5385,6 +5385,11 @@ follow-redirects@^1.10.0:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
   integrity sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==
 
+fontawesome@^5.6.3:
+  version "5.6.3"
+  resolved "https://registry.yarnpkg.com/fontawesome/-/fontawesome-5.6.3.tgz#73f0b865fa2b0b384e69d531c05a02c643b72f95"
+  integrity sha512-FCc+CawwsJWWprVEg9X14yI7zI+l9YVAyhzgu70qwGeDn0tLLDH/dVfqgij72g4BBGgLGfK2qnvFGAmYUkhaWg==
+
 for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"

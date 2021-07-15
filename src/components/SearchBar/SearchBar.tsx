@@ -4,10 +4,16 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 import { fetchByTags } from "../../lib";
+import { GodBook } from "../../types/GodBook";
 import _ from "lodash";
+import SearchResultsGrid from "./SearchResultsGrid/SearchResults";
+
+interface Props {
+  books: GodBook[];
+}
 
 export default function SearchBar(): JSX.Element {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<GodBook[]>([]);
   const [query, setQuery] = useState("");
 
   // todo: use debouncer
@@ -22,7 +28,10 @@ export default function SearchBar(): JSX.Element {
       if (query) {
         response = fetchByTags(query);
         console.log(response);
-        setData(response);
+        response.then((data) => {
+          setData(data);
+          console.log(data);
+        });
       }
     } catch (err) {
       console.log(err);
@@ -37,6 +46,7 @@ export default function SearchBar(): JSX.Element {
           onChange={debouncedChangeHandler}
         />
       </Toolbar>
+      <SearchResultsGrid books={data} />
     </>
   );
 }
