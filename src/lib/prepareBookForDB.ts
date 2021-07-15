@@ -9,7 +9,6 @@ export default async function prepareBookForDB(
   book: GoogleBookData,
   user: SafeUser
 ): Promise<BookRequest> {
-  const { id, volumeInfo } = book;
   let authorId = "";
 
   try {
@@ -22,9 +21,9 @@ export default async function prepareBookForDB(
 
   return {
     userId: user.id,
-    googleId: id,
-    title: volumeInfo.title,
-    coverImage: volumeInfo.imageLinks.thumbnail,
+    googleId: book.id,
+    title: book.volumeInfo.title,
+    coverImage: book.volumeInfo.imageLinks.thumbnail,
     authorId,
     tagIds: [],
   };
