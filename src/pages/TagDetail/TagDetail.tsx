@@ -47,9 +47,11 @@ export default function TagDetail(props: Props): JSX.Element {
     
       if (!godTag) {
         return (
-          <Grid className={styles.root}>
-            <Typography>{`Tag ${tagname} does not exist`}</Typography>
-          </Grid>
+            <Grid className={styles.root}>
+                <Box className={styles.cta}>
+                    <Typography variant="h6" className={styles.heading}>{`Tag "${tagname}" doesn't exist`}</Typography>
+                </Box>
+            </Grid>
         );
       }
 
