@@ -1,14 +1,15 @@
 /* eslint-disable */
 
 import { Navigate } from "react-router-dom";
+import HomeLayout from "./layouts/Home";
 import MainLayout from "./layouts/Main";
 import SplashLayout from "./layouts/Splash";
-import { ExplorePage, HomePage, ProfilePage, SplashPage, AddBookFormPage, TagPage } from "./util/pages";
+import { AddBookFormPage, ExplorePage, HomePage, ProfilePage, SplashPage, TagPage } from "./util/pages";
 
-const routes = (isLoggedIn, user) => [
+const routes = (isLoggedIn, user, tags, books) => [
   {
     path: "/home",
-    element: isLoggedIn ? <MainLayout user={user} pageName={HomePage} /> : <Navigate to="/" />,
+    element: isLoggedIn ? <HomeLayout user={user} pageName={HomePage} tags={tags} books={books} /> : <Navigate to="/" />,
   },
   {
     path: "/explore",
@@ -30,8 +31,8 @@ const routes = (isLoggedIn, user) => [
   },
   {
     path: "/add-book",
-    element: isLoggedIn ? <MainLayout user={user} pageName={AddBookFormPage} /> : <Navigate to="/" />
-  }
+    element: isLoggedIn ? <MainLayout user={user} pageName={AddBookFormPage} /> : <Navigate to="/" />,
+  },
 ];
 
 export default routes;

@@ -2,10 +2,9 @@
 
 .root {
   width: 300px;
-  height: calc(100vh - 75px);
+  height: calc(100vh - #{t.$nav-height} - #{t.$cta-height});
 
   background-color: t.$color-background-white;
-  box-shadow: 10px 0px 5px t.$color-background-main;
 
   display: flex;
   flex-direction: column;

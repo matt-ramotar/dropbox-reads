@@ -1,13 +1,16 @@
 import loadable from "@loadable/component";
 import { Box, Grid } from "@material-ui/core";
 import Nav from "../../components/Nav";
-import SideNav from "../../components/SideNav/SideNav";
+import { GodBook } from "../../types/GodBook";
 import SafeUser from "../../types/SafeUser";
+import { Tag } from "../../types/Tag";
 import styles from "./Main.module.scss";
 
 interface Props {
   user: SafeUser;
   pageName: string;
+  tags: Tag[];
+  books: GodBook[];
 }
 
 export default function Main(props: Props): JSX.Element {
@@ -18,10 +21,10 @@ export default function Main(props: Props): JSX.Element {
       <Nav user={props.user} />
 
       <Box className={styles.container}>
-        <SideNav user={props.user} />
+
 
         <Box className={styles.main}>
-          <Page user={props.user} />
+          <Page user={props.user} books={props.books}/>
         </Box>
       </Box>
     </Grid>

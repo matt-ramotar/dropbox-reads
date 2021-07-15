@@ -1,0 +1,20 @@
+@use '../../theme' as t;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-height: calc(100vh - #{t.$nav-height} - #{t.$cta-height});
+  width: 100vw;
+  background-color: t.$color-background-white;
+}

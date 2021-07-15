@@ -1,26 +1,22 @@
-import { Grid, Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Grid } from "@material-ui/core";
 import SafeUser from "../../types/SafeUser";
+import { Tag } from "../../types/Tag";
+import SideFilter from '../SideFilter';
 import styles from "./SideNav.module.scss";
 
 interface Props {
   user: SafeUser;
+  tags: Tag[]
 }
 
 export default function SideNav(props: Props): JSX.Element {
   return (
     <Grid container className={styles.root}>
-      <Link to="/home">
-        <Typography>Home</Typography>
-      </Link>
 
-      <Link to="/explore">
-        <Typography>Explore</Typography>
-      </Link>
 
-      <Link to={`/${props.user.username}`}>
-        <Typography>Profile</Typography>
-      </Link>
+      <SideFilter tags={props.tags}/>
+
+
     </Grid>
   );
 }
