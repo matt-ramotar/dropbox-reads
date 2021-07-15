@@ -1,0 +1,61 @@
+@use '../../theme' as t;
+
+.root {
+  width: 240px;
+  height: 367px;
+  background-color: t.$color-paper;
+  margin: 40px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .heading {
+    font-weight: bold;
+  }
+  img {
+    height: 175px;
+    width: 202px;
+    border-radius: 25px;
+    object-fit: cover;
+    align-self: center;
+  }
+}
+
+.icon {
+  color: t.$color-fill-brand;
+  height: 30px;
+  width: 30px;
+}
+
+.num_upvotes {
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.top_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 21px;
+  margin-top: 28px;
+  margin-right: 21px;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.description {
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 4em;
+  margin-left: 21px;
+  margin-right: 21px;
+  margin-bottom: 20px;
+  text-align: justify;
+}

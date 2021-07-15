@@ -1,0 +1,10 @@
+@use '../../theme' as t;
+
+.label {
+  font-weight: bold;
+  color: t.$color-gray-dark;
+}
+
+.root {
+  margin-top: 5px;
+}
