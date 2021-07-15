@@ -10,6 +10,7 @@ export interface GodBook {
   id: string;
   googleId?: string;
   title: string;
+  description: string;
   coverImage?: string;
   author?: Author;
   bookTags?: BookTag[];
