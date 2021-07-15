@@ -1,13 +1,20 @@
 import { GodTag } from "../../types/GodTag";
 import { useLocation } from "react-router";
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import styles from "./tagDetail.module.scss";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Box } from "@material-ui/core";
 import { useEffect } from "react";
 import { fetchGodTag } from "../../lib";
+import BookCard from "../../components/BookCard";
+import SafeUser from "../../types/SafeUser";
+import { GodBook } from "../../types/GodBook";
 
+interface Props {
+    user: SafeUser;
+    books: GodBook[];
+}
 
-export default function TagDetail(): JSX.Element {
+export default function TagDetail(props: Props): JSX.Element {
     const location = useLocation();
     const tagname = location.pathname.split("/")[2];
 
@@ -40,23 +47,24 @@ export default function TagDetail(): JSX.Element {
     
       if (!godTag) {
         return (
-          <Grid className={styles.grid}>
+          <Grid className={styles.root}>
             <Typography>{`Tag ${tagname} does not exist`}</Typography>
           </Grid>
         );
       }
 
-      const bookList = godTag.books?.map((book) =>
-          <li key={book.id}>{book.title}</li>
-      );
-
-
     return (
-        <Grid className={styles.grid}>
-            <Typography>Tag Detail</Typography>
-            <Typography>{`Tag: ${godTag.tag}`}</Typography>
-            <Typography>Book List:</Typography>
-            <ul>{bookList}</ul>
-        </Grid>
+        <Fragment>
+            <Grid className={styles.root}>
+                <Box className={styles.cta}>
+                    <Typography variant="h6" className={styles.heading}>{`Books tagged with "${tagname}"`}</Typography>
+                </Box>
+            </Grid>
+            <Grid className={styles.root}>
+                <Box className={styles.main}>
+                    {godTag.books?.map((book) => <BookCard key={book.id} user={props.user} book={book}/>)}
+                </Box>
+            </Grid>
+        </Fragment>
     );
 }
