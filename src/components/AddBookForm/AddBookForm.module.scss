@@ -1,3 +1,16 @@
 .form {
-    row-gap: 1.25rem;
+  width: 50%;
+
+  & > * {
+    margin: 1.25rem 0;
+  }
+}
+
+.titleDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recommendationDiv > * {
+  margin-bottom: 1.25rem;
 }
