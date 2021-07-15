@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import authReducer from "./auth";
-import { bookFormSlice } from "./slices/form";
+import { bookFormSlice } from "./slices/addBook";
 
 const store = configureStore({
   reducer: {
