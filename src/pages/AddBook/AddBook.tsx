@@ -5,7 +5,7 @@ import AddBookForm from "../../components/AddBookForm";
 import { useAppDispatch, useAppSelector } from "../../util/hooks";
 import Book from "../../components/Book";
 import { useEffect, useState } from "react";
-import { clearGoogleData, setFetchStatusToIdle, setSendToDBStatusToIdle } from "../../store/slices/addBook";
+import { clearGoogleData, setFetchStatusToIdle, setSendToDBStatusToIdle } from "../../store/addBook";
 
 export default function AddBook({ user }: { user: SafeUser }): JSX.Element {
   const dispatch = useAppDispatch();

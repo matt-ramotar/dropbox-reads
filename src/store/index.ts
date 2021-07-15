@@ -2,14 +2,13 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import authReducer from "./auth";
 import filtersSlice from "./filters";
-import { bookFormSlice } from "./slices/addBook";
-
+import bookFormSlice from "./addBook";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     filters: filtersSlice,
-    bookForm: bookFormSlice.reducer,
+    bookForm: bookFormSlice,
   },
   middleware: () => getDefaultMiddleware().concat(logger),
   devTools: process.env.REACT_APP_ENV !== "production",

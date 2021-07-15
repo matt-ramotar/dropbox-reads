@@ -1,6 +1,6 @@
 import { Button } from "@material-ui/core";
 import { convertToHTTPS, extractYearFromDate } from "../../helpers";
-import { sendBookToDB } from "../../store/slices/addBook";
+import { sendBookToDB } from "../../store/addBook";
 import { GoogleBookData } from "../../types/GoogleBookData";
 import SafeUser from "../../types/SafeUser";
 import { useAppDispatch } from "../../util/hooks";

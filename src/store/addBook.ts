@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 
-import { VERSION } from "../../util/endpoints";
-import { API_URL } from "../../util/secrets";
-import { buildGoogleBooksQuery } from "../../helpers";
-import prepareBookForDB from "../../lib/prepareBookForDB";
-import { GoogleBookData } from "../../types/GoogleBookData";
-import { BookRequest } from "../../types/BookRequest";
-import SafeUser from "../../types/SafeUser";
+import { VERSION } from "../util/endpoints";
+import { API_URL } from "../util/secrets";
+import { buildGoogleBooksQuery } from "../helpers";
+import prepareBookForDB from "../lib/prepareBookForDB";
+import { GoogleBookData } from "../types/GoogleBookData";
+import { BookRequest } from "../types/BookRequest";
+import SafeUser from "../types/SafeUser";
 
 // Interfaces
 interface AddBookState {
@@ -75,7 +75,7 @@ export const sendBookToDB = createAsyncThunk("addBookForm/sendToDB", async (data
 });
 
 // Slices
-export const bookFormSlice = createSlice({
+const bookFormSlice = createSlice({
   name: "addBookForm",
   initialState,
   reducers: {
@@ -128,3 +128,5 @@ export const bookFormSlice = createSlice({
 
 // Actions
 export const { setBook, setDescription, setFetchStatusToIdle, setSendToDBStatusToIdle, clearGoogleData } = bookFormSlice.actions;
+
+export default bookFormSlice.reducer;

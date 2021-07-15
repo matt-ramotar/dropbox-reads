@@ -1,7 +1,7 @@
 import { FormControl, Input, InputLabel, Button, FormHelperText } from "@material-ui/core";
 import { useState, FormEvent, ChangeEvent } from "react";
 
-import { clearGoogleData, fetchBooksFromGoogle, setBook, setFetchStatusToIdle } from "../../store/slices/addBook";
+import { clearGoogleData, fetchBooksFromGoogle, setBook, setFetchStatusToIdle } from "../../store/addBook";
 import { useAppDispatch, useAppSelector } from "../../util/hooks";
 import styles from "./AddBookForm.module.scss";
 
