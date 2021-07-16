@@ -22,7 +22,6 @@ export default function Home(props: Props): JSX.Element {
   const Page = loadable(() => import(`../../pages/${props.pageName}`));
 
   function handleSearch(books: GodBook[]) {
-    console.log(books);
     setBooks(books);
   }
 
@@ -30,10 +29,10 @@ export default function Home(props: Props): JSX.Element {
     <Grid container className={styles.root}>
       <Nav user={props.user} />
       <SubmitABookCta user={props.user} />
+      <SearchBar handleSearch={handleSearch} />
 
       <Box className={styles.container}>
         <SideNav user={props.user} tags={props.tags} />
-        <SearchBar handleSearch={handleSearch} />
         <Box className={styles.main}>
           <Page user={props.user} books={books} />
         </Box>
