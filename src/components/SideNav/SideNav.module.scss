@@ -1,7 +1,8 @@
 @use '../../theme' as t;
 
 .root {
-  width: 300px;
+  width: 240px;
+
   height: calc(100vh - #{t.$nav-height} - #{t.$cta-height});
 
   background-color: t.$color-background-white;
@@ -9,5 +10,4 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
 }
