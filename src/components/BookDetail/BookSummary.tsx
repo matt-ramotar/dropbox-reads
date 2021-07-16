@@ -26,8 +26,7 @@ export const BookSummary: FC<BookSummaryProps> = ({bookDetails}) => {
           </Grid>
           <Grid item xs className={styles.description}>
             <Grid item xs>
-              {/*  TODO: add description; it's not currently in godbook ..?*/}
-              <Typography variant="body1">This is a book about a lot of things. The things range from this thing to that thing and it all ties back to another special thing.</Typography>
+              <Typography variant="body1">{`${bookDetails.description}`}</Typography>
             </Grid>
           </Grid>
         </Grid>

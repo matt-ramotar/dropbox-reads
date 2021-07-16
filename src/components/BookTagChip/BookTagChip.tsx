@@ -24,7 +24,6 @@ export default function BookTagChip(props: Props) : JSX.Element {
                             clickable={true}
                             component={Link}
                             to={`/tags/${gbTag.tag.tag}`}
-                            size="small"
                             variant="outlined"
                         />
                     </Grid>

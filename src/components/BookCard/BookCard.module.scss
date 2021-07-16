@@ -1,15 +1,16 @@
 @use '../../theme' as t;
 
 .root {
-  width: 240px;
-  height: 367px;
+  width: 260px;
+  height: 400px;
   background-color: t.$color-paper;
   margin: 40px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: 1.5s;
+  transition: 1s;
+  overflow-y: scroll;
 
   .heading {
     font-weight: bold;
@@ -24,7 +25,8 @@
 
   &:hover {
     background-color: t.$color-background-accent;
-    transition: 1.5s;
+    transition: 1s;
+    color: white;
   }
 }
 
@@ -62,8 +64,31 @@
   max-height: 4em;
   margin-left: 21px;
   margin-right: 21px;
+  margin-bottom: 30px;
   text-align: justify;
+  font-weight: bold;
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+
+  .author {
+    font-size: 1em;
+  }
 }
 
-.tags {
+.user_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
 }

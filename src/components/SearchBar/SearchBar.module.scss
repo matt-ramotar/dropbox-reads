@@ -1,0 +1,23 @@
+@use '../../theme' as t;
+
+
+.root {
+  width: 100vw;
+  height: t.$search-height;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 5px 30px;
+
+  flex-wrap: nowrap;
+}
+
+.cta {
+  padding: 0px 20px;
+  height: 60px;
+  border-radius: 20px;
+  margin-left: 30px;
+  width: 500px;
+}

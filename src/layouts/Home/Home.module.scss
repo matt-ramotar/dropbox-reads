@@ -6,7 +6,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 100vw;
-  height: 100vh;
 }
 
 .container {
@@ -14,7 +13,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  max-height: calc(100vh - #{t.$nav-height} - #{t.$cta-height});
+  max-height: fit-content;
   width: 100vw;
   background-color: t.$color-background-white;
 }
