@@ -1,19 +1,16 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 
-import { GOOGLE_BOOKS_URL, VERSION } from "../../util/endpoints";
-import { API_URL, GOOGLE_BOOKS_API_KEY } from "../../util/secrets";
-import prepareBookForDB from "../../lib/prepareBookForDB";
-import { GoogleBookData } from "../../types/GoogleBookData";
-import SafeUser from "../../types/SafeUser";
-import { BookRequest } from "../../types/BookRequest";
+import { VERSION } from "../util/endpoints";
+import { API_URL } from "../util/secrets";
+import { buildGoogleBooksQuery } from "../helpers";
+import prepareBookForDB from "../lib/prepareBookForDB";
+import { GoogleBookData } from "../types/GoogleBookData";
+import { BookRequest } from "../types/BookRequest";
+import SafeUser from "../types/SafeUser";
 
 // Interfaces
 interface AddBookState {
-  title: string;
-  author: string;
-  description: string;
-  tags: string[];
   fetchStatus: string;
   sendToDBStatus: string;
   googleData: GoogleData;
@@ -23,13 +20,6 @@ interface GoogleData {
   items: GoogleBookData[];
   kind: string;
   totalItems: number;
-}
-
-interface BookPayload {
-  title: string;
-  author: string;
-  description: string;
-  tags?: string[];
 }
 
 interface DataToDB {
@@ -44,10 +34,6 @@ interface SearchTerms {
 
 // Initial State
 const initialState = {
-  title: "",
-  author: "",
-  description: "",
-  tags: [],
   fetchStatus: "idle",
   sendToDBStatus: "idle",
   googleData: {
@@ -58,17 +44,10 @@ const initialState = {
 } as AddBookState;
 
 // Thunks
-export const fetchBooksFromGoogle = createAsyncThunk(
-  "addBookForm/fetchFromGoogle",
-  async (searchTerms: SearchTerms) => {
-    const response: AxiosResponse = await axios.get(
-      `${GOOGLE_BOOKS_URL}${encodeURI(searchTerms.title)}+inauthor:${encodeURI(
-        searchTerms.author
-      )}&key=${GOOGLE_BOOKS_API_KEY}`
-    );
-    return response.data;
-  }
-);
+export const fetchBooksFromGoogle = createAsyncThunk("addBookForm/fetchFromGoogle", async (searchTerms: SearchTerms) => {
+  const response: AxiosResponse = await axios.get(buildGoogleBooksQuery(searchTerms.title, searchTerms.author));
+  return response.data;
+});
 
 export const sendBookToDB = createAsyncThunk("addBookForm/sendToDB", async (dataToDB: DataToDB) => {
   const bookToDB: BookRequest = await prepareBookForDB(dataToDB.book, dataToDB.user);
@@ -81,19 +60,18 @@ export const sendBookToDB = createAsyncThunk("addBookForm/sendToDB", async (data
 });
 
 // Slices
-export const bookFormSlice = createSlice({
+const bookFormSlice = createSlice({
   name: "addBookForm",
   initialState,
   reducers: {
-    setBook: (state, action: PayloadAction<BookPayload>) => {
-      const { title, author, description, tags } = action.payload;
-
-      state.title = title;
-      state.author = author;
-      state.description = description;
-      if (tags?.length) {
-        state.tags = tags;
-      }
+    setFetchStatusToIdle: (state) => {
+      state.fetchStatus = "idle";
+    },
+    setSendToDBStatusToIdle: (state) => {
+      state.sendToDBStatus = "idle";
+    },
+    clearGoogleData: (state) => {
+      state.googleData = { items: [], kind: "", totalItems: 0 };
     },
   },
   extraReducers: (builder) => {
@@ -120,5 +98,5 @@ export const bookFormSlice = createSlice({
   },
 });
 
-// Actions
-export const { setBook } = bookFormSlice.actions;
+export const { setFetchStatusToIdle, setSendToDBStatusToIdle, clearGoogleData } = bookFormSlice.actions;
+export default bookFormSlice.reducer;

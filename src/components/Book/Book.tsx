@@ -1,29 +1,19 @@
 import { Button } from "@material-ui/core";
 import { convertToHTTPS, extractYearFromDate } from "../../helpers";
-import { sendBookToDB } from "../../store/slices/addBook";
+import { sendBookToDB } from "../../store/addBook";
 import { GoogleBookData } from "../../types/GoogleBookData";
 import SafeUser from "../../types/SafeUser";
 import { useAppDispatch } from "../../util/hooks";
 import styles from "./Book.module.scss";
 
-export default function Book({
-  bookData,
-  user,
-}: {
-  bookData: GoogleBookData;
-  user: SafeUser;
-}): JSX.Element {
+export default function Book({ bookData, user }: { bookData: GoogleBookData; user: SafeUser }): JSX.Element {
   const dispatch = useAppDispatch();
   const { volumeInfo } = bookData;
 
   return (
     <div className={styles.book}>
       <div className={styles.imgContainer}>
-        <img
-          className={styles.coverImg}
-          src={convertToHTTPS(volumeInfo.imageLinks.thumbnail)}
-          alt={`Book Cover of ${volumeInfo.title}`}
-        />
+        <img className={styles.coverImg} src={convertToHTTPS(volumeInfo.imageLinks.thumbnail)} alt={`Book Cover of ${volumeInfo.title}`} />
       </div>
 
       <div className={styles.infoDiv}>
@@ -42,12 +32,8 @@ export default function Book({
           >
             More Info
           </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={() => dispatch(sendBookToDB({ user, book: bookData }))}
-          >
-            Add
+          <Button color="primary" variant="contained" onClick={() => dispatch(sendBookToDB({ user, book: bookData }))}>
+            Recommend
           </Button>
         </div>
       </div>
