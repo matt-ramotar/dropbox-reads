@@ -1,20 +1,24 @@
 import { Grid } from "@material-ui/core";
 import SafeUser from "../../types/SafeUser";
 import { Tag } from "../../types/Tag";
-import SideFilter from '../SideFilter';
+import SideFilter from "../SideFilter";
+import SideUserFilter from "../SideUserFilter/SideUserFilter";
 import styles from "./SideNav.module.scss";
 
 interface Props {
   user: SafeUser;
-  tags: Tag[]
+  tags: Tag[];
+  users: SafeUser[];
 }
 
 export default function SideNav(props: Props): JSX.Element {
   return (
-    <Grid container className={styles.root}>
+    <Grid  className={styles.root}>
 
 
       <SideFilter tags={props.tags}/>
+
+      <SideUserFilter users={props.users}/>
 
 
     </Grid>
