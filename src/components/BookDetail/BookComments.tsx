@@ -77,7 +77,7 @@ export const BookComments: FC<BookSummaryProps> = (props) => {
                 </Comment>
               </div>)
             ) : "Leave a comment!"}
-            <Form>
+            <Form className={styles.commentform}>
               <Form.TextArea size='large' value={formText} onChange={handleTextChange}/>
               <Form.Button content='Post' labelPosition='left' icon='edit' onClick={handleSubmit} />
             </Form>
