@@ -2,6 +2,8 @@
 
 .root {
   width: 260px;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 400px;
   background-color: t.$color-paper;
   margin: 40px;
@@ -9,11 +11,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   transition: 1s;
   overflow-y: scroll;
 
   .heading {
     font-weight: bold;
+    text-align: center;
   }
   img {
     height: 175px;
@@ -30,6 +34,12 @@
   }
 }
 
+.root::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+
 .icon {
   color: t.$color-fill-brand;
   height: 30px;
@@ -44,11 +54,10 @@
 .top_box {
   display: flex;
   flex-direction: row;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-left: 21px;
   margin-top: 28px;
-  margin-right: 21px;
 }
 
 .left {
@@ -58,15 +67,14 @@
 }
 
 .description {
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  overflow: hidden;
   max-height: 4em;
   margin-left: 21px;
   margin-right: 21px;
   margin-bottom: 30px;
-  text-align: justify;
   font-weight: bold;
+  text-align: center;
+}
+
 .details {
   display: flex;
   flex-direction: column;

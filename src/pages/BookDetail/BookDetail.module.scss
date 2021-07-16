@@ -1,27 +1,26 @@
 @use '../../theme' as t;
 
 .header {
-  position:absolute;
-  left:0; right:0;
+  position: absolute;
+  left: 0;
+  right: 0;
   height: 68px;
-  background-color: #3300FF;
+  background-color: #3300ff;
 }
 
-body {
-  height: 100%;
-  overflow: hidden;
-}
 .sidebar {
-
   height: 100%;
-  position:fixed;
-  left:0;
+  position: fixed;
+  left: 0;
   width: 178px;
 }
 .main {
   overflow-y: scroll;
   position: absolute;
-  left:462px; top:107px; right:0; bottom:0;
+  left: 462px;
+  top: 107px;
+  right: 0;
+  bottom: 0;
 }
 
 .recc {
@@ -37,7 +36,7 @@ body {
   margin-top: 10px;
   margin-left: 0px;
   margin-bottom: 3px;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .bookTags {

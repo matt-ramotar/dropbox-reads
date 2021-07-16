@@ -3,7 +3,7 @@ import React from "react";
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login";
 import { Link } from "react-router-dom";
 import { extractUsername } from "../../helpers";
-import logo from "../../images/dropbox-reads-grotesk.png";
+import logo from "../../images/dropbox-reads-white.png";
 import { continueWithGoogle } from "../../lib";
 import SafeUser from "../../types/SafeUser";
 import { GOOGLE_CLIENT_ID } from "../../util/secrets";

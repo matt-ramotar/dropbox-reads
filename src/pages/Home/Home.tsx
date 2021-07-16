@@ -16,7 +16,7 @@ export default function Home(props: Props): JSX.Element {
 
   return (
     <Grid className={styles.root}>
-      {filterBooks([...props.books], Object.keys(filters)).map((book) => (
+      {filterBooks(props.books, Object.keys(filters)).map((book) => (
         <BookCard key={book.id} user={props.user} book={book} />
       ))}
     </Grid>

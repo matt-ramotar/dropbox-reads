@@ -15,6 +15,12 @@
   border-radius: 8px;
 }
 
+.main::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+
 .heading {
   margin-left: 34px;
   font-size: 16px;

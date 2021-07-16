@@ -1,18 +1,16 @@
-import React, {FC} from 'react';
-
-import { Grid, Typography } from "@material-ui/core";
-import {GodBook} from "../../types/GodBook";
-import styles from "./BookDetail.module.scss";
-import { useLocation, useParams } from "react-router";
-import {BookSummary} from "../../components/BookDetail/BookSummary";
-import {BookComments} from "../../components/BookDetail/BookComments";
-import {Upvotes} from "../../components/BookDetail/Upvotes";
-import fetchGodBook from "../../lib/fetchGodBook";
-import GlobalNav from "../../components/BookDetailNav/GlobalNav";
-import SafeUser from "../../types/SafeUser";
-import {Grid, Typography} from "@material-ui/core";
-import {getFullName} from "../../helpers";
+import { Typography } from "@material-ui/core";
+import React, { FC } from 'react';
+import { useParams } from "react-router";
+import { BookComments } from "../../components/BookDetail/BookComments";
+import { BookSummary } from "../../components/BookDetail/BookSummary";
+import { Upvotes } from "../../components/BookDetail/Upvotes";
 import BookTagChip from '../../components/BookTagChip';
+import { getFullName } from "../../helpers";
+import fetchGodBook from "../../lib/fetchGodBook";
+import { GodBook } from "../../types/GodBook";
+import SafeUser from "../../types/SafeUser";
+import styles from "./BookDetail.module.scss";
+
 
 export const BookDetail: FC<{user: SafeUser }> = (props) => {
   const { id } = useParams();
