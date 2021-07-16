@@ -5,7 +5,6 @@ import { GodBook } from "../types/GodBook";
 
 export default async function fetchByTags(query: string): Promise<Array<GodBook>> {
   let response: AxiosResponse;
-  console.log("QUERY: ", query);
   const url = `${API_URL}${VERSION}/search`;
   try {
     response = await axios({
@@ -19,6 +18,5 @@ export default async function fetchByTags(query: string): Promise<Array<GodBook>
     console.log(err);
     throw new Error(err);
   }
-
   return response.data;
 }

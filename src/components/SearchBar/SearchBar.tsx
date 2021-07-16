@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { InputBase, TextField } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { useMemo } from "react";
 import { fetchByTags } from "../../lib";
-import _ from "lodash";
+import debounce from "lodash/debounce";
 import styles from "./SearchBar.module.scss";
 
 interface Props {
@@ -16,7 +16,7 @@ export default function SearchBar(props: Props): JSX.Element {
   const changeHandler = (e: React.ChangeEvent<any>) => {
     setQuery(e.target.value);
   };
-  const debouncedChangeHandler = useMemo(() => _.debounce(changeHandler, 600), []);
+  const debouncedChangeHandler = useMemo(() => debounce(changeHandler, 600), []);
 
   useEffect(() => {
     let response;

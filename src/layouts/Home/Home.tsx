@@ -22,6 +22,7 @@ export default function Home(props: Props): JSX.Element {
   const Page = loadable(() => import(`../../pages/${props.pageName}`));
 
   function handleSearch(books: GodBook[]) {
+    console.log(books);
     setBooks(books);
   }
 
