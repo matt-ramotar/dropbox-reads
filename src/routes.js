@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import HomeLayout from "./layouts/Home";
 import MainLayout from "./layouts/Main";
 import SplashLayout from "./layouts/Splash";
+import BookDetail from "./pages/BookDetail";
 import { AddBookFormPage, ExplorePage, HomePage, ProfilePage, SplashPage, TagPage, BookDetailPage } from "./util/pages";
 
 const routes = (isLoggedIn, user, tags, books, users) => [

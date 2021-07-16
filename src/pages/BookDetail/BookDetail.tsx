@@ -1,7 +1,9 @@
 import React, {FC} from 'react';
+
+import { Grid, Typography } from "@material-ui/core";
 import {GodBook} from "../../types/GodBook";
 import styles from "./BookDetail.module.scss";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import {BookSummary} from "../../components/BookDetail/BookSummary";
 import {BookComments} from "../../components/BookDetail/BookComments";
 import {Upvotes} from "../../components/BookDetail/Upvotes";
@@ -43,6 +45,7 @@ export const BookDetail: FC<{user: SafeUser }> = (props) => {
           <BookSummary bookDetails={bookDetails} />
         </div>
         <div className={styles.main}>
+
           <div className={styles.recc}>
             <Typography variant='h5'>Recommended by</Typography>
             {/*<Typography variant='subtitle2'>{getFullName(bookDetails.userAddedBy.firstName, bookDetails.userAddedBy.lastName)}</Typography>*/}
