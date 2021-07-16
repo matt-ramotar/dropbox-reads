@@ -2,15 +2,12 @@ import {
   faPlusCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Box, Grid, Typography, Button } from "@material-ui/core";
 import React from "react";
 import { Link } from 'react-router-dom';
 import book from '../../images/book.svg';
 import SafeUser from "../../types/SafeUser";
 import styles from "./SubmitABookCta.module.scss";
-
-
-
 
 interface Props {
   user: SafeUser;
@@ -36,7 +33,7 @@ export default function SubmitABookCta(props: Props): JSX.Element {
             size="2x"
           />
 
-          <Typography variant="h6" className={styles.button_text}>Submit a book</Typography>
+        <Typography variant="h6" className={styles.button_text}>Submit a book</Typography>
       </Box>
       </Link>
     </Grid>
