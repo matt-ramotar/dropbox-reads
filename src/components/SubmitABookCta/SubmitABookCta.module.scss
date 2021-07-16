@@ -36,15 +36,24 @@
 }
 
 .button {
-  width: 200px;
+  width: 250px;
   background-color: t.$color-paper;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  height: 60px;
+  padding: 20px;
 
   border-radius: 20px;
   margin-right: 30px;
+  
+  transition: 1s;
+
+  &:hover {
+    background-color: t.$color-background-accent;
+    transition: 1s;
+  }
 }
 
 .icon {
