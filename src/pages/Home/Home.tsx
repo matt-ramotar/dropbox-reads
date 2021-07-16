@@ -12,11 +12,13 @@ interface Props {
 }
 
 export default function Home(props: Props): JSX.Element {
-  const filters = useSelector((state: RootState) => state.filters)
+  const filters = useSelector((state: RootState) => state.filters);
 
   return (
     <Grid className={styles.root}>
-      {filterBooks([...props.books], Object.keys(filters)).map(book => <BookCard key={book.id} user={props.user} book={book}/>)}
+      {filterBooks([...props.books, ...props.books], Object.keys(filters)).map((book) => (
+        <BookCard key={book.title} user={props.user} book={book} />
+      ))}
     </Grid>
   );
 }
@@ -26,20 +28,18 @@ function filterBooks(books: GodBook[], tagIds: string[]): GodBook[] {
   console.log(tagIds);
   return books.filter((book: GodBook) => {
     const hasTag = (book: GodBook, tag: string) => {
-      if (!book.bookTags) return false
+      if (!book.bookTags) return false;
       for (const bookTag of book.bookTags) {
-        if (bookTag.tag.tag.toLowerCase() === tag.toLowerCase()) {
-          return true;
-        }
+        if (bookTag.tagId === tag) return true;
       }
-      return false
-    }
+      return false;
+    };
 
     for (const tagId of tagIds) {
-      if (hasTag(book, tagId)) continue
-      else return false
+      if (hasTag(book, tagId)) continue;
+      else return false;
     }
 
-    return true
-  })
+    return true;
+  });
 }

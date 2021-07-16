@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { InputBase } from "@material-ui/core";
+import { InputBase, TextField } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { useMemo } from "react";
 import { fetchByTags } from "../../lib";
@@ -30,11 +30,14 @@ export default function SearchBar(props: Props): JSX.Element {
     }
   }, [query]);
   return (
-    <InputBase
-      placeholder="Search recommendations…"
-      inputProps={{ "aria-label": "search" }}
-      onChange={debouncedChangeHandler}
-      className={styles.cta}
-    />
+    <div className={styles.root}>
+      <TextField
+        id="standard-basic"
+        placeholder="Search recommendations…"
+        inputProps={{ "aria-label": "search" }}
+        onChange={debouncedChangeHandler}
+        className={styles.cta}
+      />
+    </div>
   );
 }
