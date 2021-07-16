@@ -1,13 +1,19 @@
 @use "../../theme" as t;
 
-.root {
-    padding: 5px;
+.container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    color: white;
+    margin: 5px;
 }
 
-.primaryColor {
-    color: white;
+.chip {
+    background-color: t.$color-fill-brand;
+    margin: 5px;
+    color: t.$color-gray-light;
+
+    &:hover {
+        background-color: t.$color-background-accent;
+        color: t.$color-gray-dark;
+    }
 }

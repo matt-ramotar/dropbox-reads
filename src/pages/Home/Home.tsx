@@ -22,11 +22,15 @@ export default function Home(props: Props): JSX.Element {
 }
 
 function filterBooks(books: GodBook[], tagIds: string[]): GodBook[] {
+  console.log(books);
+  console.log(tagIds);
   return books.filter((book: GodBook) => {
     const hasTag = (book: GodBook, tag: string) => {
       if (!book.bookTags) return false
       for (const bookTag of book.bookTags) {
-        if (bookTag.tag && bookTag.tag.id === tag) return true
+        if (bookTag.tag.tag.toLowerCase() === tag.toLowerCase()) {
+          return true;
+        }
       }
       return false
     }

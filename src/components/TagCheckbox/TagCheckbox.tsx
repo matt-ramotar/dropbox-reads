@@ -22,7 +22,7 @@ export default function TagCheckbox(props: Props): JSX.Element {
   return (
     <Grid className={styles.root}>
       <FormControlLabel
-            control={<Checkbox checked={isChecked} onChange={handleChange} name={props.tag.id} color="primary"/>}
+            control={<Checkbox checked={isChecked} onChange={handleChange} name={props.tag.tag} color="primary"/>}
             label={<Typography variant="caption" className={styles.label}>{props.tag.tag}</Typography>}
           />
     </Grid>

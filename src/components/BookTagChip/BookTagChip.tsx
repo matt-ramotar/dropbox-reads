@@ -11,13 +11,13 @@ interface Props {
 
 export default function BookTagChip(props: Props) : JSX.Element {
     return (
-        <Box>
+        <Box className={styles.container}>
             {props.book.bookTags?.map((gbTag) => {
                 if (!gbTag || !gbTag.tag) {
                     return null;
                 }
                 return (
-                    <Grid className={styles.root} key={gbTag.id}>
+                    <Grid key={gbTag.id}>
                         <Chip
                             label={gbTag.tag.tag}
                             className={styles.chip}
@@ -25,7 +25,7 @@ export default function BookTagChip(props: Props) : JSX.Element {
                             component={Link}
                             to={`/tags/${gbTag.tag.tag}`}
                             size="small"
-                            color="primary"
+                            variant="outlined"
                         />
                     </Grid>
                 );
