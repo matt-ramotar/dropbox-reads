@@ -1,0 +1,89 @@
+@use '../../theme' as t;
+
+/* Sidebar */
+.root {
+  //position: fixed;
+  margin-left: 30px;
+}
+
+//TODO: description should not overflow
+.description {
+  max-width: 350px;
+  position: relative;
+}
+
+.outer {
+  position: relative;
+  width: 428px;
+  height: 540px;
+  background: #3300FF;
+  opacity: 0.1;
+  border-radius: 25px;
+}
+
+.inner {
+  position: absolute;
+  flex-direction: column;
+  align-content: space-around;
+  background: #3300FF;
+  opacity: 0.65;
+  border-radius: 25px;
+  color: #FFFFFF;
+  left: 70px;
+  top: 80px;
+  width: 350px;
+  height: 450px;
+  padding: 30px;
+
+  img {
+    height: 200px;
+    width: 175px;
+    border-radius: 20px;
+    object-fit: cover;
+    align-self: center;
+    margin-bottom: 15px;
+  }
+}
+
+.upvotes {
+  position: absolute;
+  left: 48px;
+  top: 36px;
+  height: 32px;
+  width: 400px;
+  flex-direction: row;
+  font-size: x-large;
+  vertical-align: middle;
+  // Put the upvote button at a layer above the book summary section so that the button is clickable
+  z-index: 1;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  box-shadow: 0px 0px 0px transparent;
+  background: transparent;
+  width: 35.64px;
+  height: 31.78px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 12px;
+  z-index: 2;
+}
+
+h5 {
+  font-weight: 600;
+}
+
+/* Comments section */
+.discussion {
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
+.commentform {
+  padding-top: 50px;
+  padding-bottom: 15px;
+}
