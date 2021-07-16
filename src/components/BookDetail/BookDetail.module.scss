@@ -3,6 +3,7 @@
 /* Sidebar */
 .root {
   //position: fixed;
+  margin-left: 30px;
 }
 
 //TODO: description should not overflow
@@ -12,11 +13,9 @@
 }
 
 .outer {
-  position: absolute;
+  position: relative;
   width: 428px;
-  height: 654px;
-  left: 34px;
-  top: 107px;
+  height: 540px;
   background: #3300FF;
   opacity: 0.1;
   border-radius: 25px;
@@ -30,17 +29,26 @@
   opacity: 0.65;
   border-radius: 25px;
   color: #FFFFFF;
-  left: 64px;
-  top: 228px;
-  width: 368px;
-  height: 500px;
+  left: 70px;
+  top: 80px;
+  width: 350px;
+  height: 450px;
   padding: 30px;
+
+  img {
+    height: 200px;
+    width: 175px;
+    border-radius: 20px;
+    object-fit: cover;
+    align-self: center;
+    margin-bottom: 15px;
+  }
 }
 
 .upvotes {
   position: absolute;
-  left: 64px;
-  top: 157px;
+  left: 48px;
+  top: 36px;
   height: 32px;
   width: 400px;
   flex-direction: row;
@@ -63,15 +71,6 @@
   background-repeat: no-repeat;
   margin-right: 12px;
   z-index: 2;
-}
-
-img {
-  height: 175px;
-  width: 202px;
-  border-radius: 25px;
-  object-fit: cover;
-  align-self: center;
-  margin-bottom: 15px;
 }
 
 h5 {

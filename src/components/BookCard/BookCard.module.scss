@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: 1.5s;
+  transition: 1s;
 
   .heading {
     font-weight: bold;
@@ -24,7 +24,8 @@
 
   &:hover {
     background-color: t.$color-background-accent;
-    transition: 1.5s;
+    transition: 1s;
+    color: white;
   }
 }
 
@@ -62,7 +63,9 @@
   max-height: 4em;
   margin-left: 21px;
   margin-right: 21px;
+  margin-bottom: 30px;
   text-align: justify;
+  font-weight: bold;
 }
 
 .tags {

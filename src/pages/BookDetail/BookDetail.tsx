@@ -36,7 +36,7 @@ export const BookDetail: FC<{user: SafeUser }> = (props) => {
     // <Grid className={styles.grid}>
     bookDetails ? (
       <div>
-        <div className={styles.header}><GlobalNav user={props.user} /></div>
+        {/* <div className={styles.header}><GlobalNav user={props.user} /></div> */}
         <div className={styles.sidebar}>
           <Upvotes bookUpvotes={bookDetails.bookUpvotes ? bookDetails.bookUpvotes : []}/>
           <BookSummary bookDetails={bookDetails} />
