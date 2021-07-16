@@ -30,7 +30,7 @@ export default function SearchBar(props: Props): JSX.Element {
     }
   }, [query]);
   return (
-    <div className={styles.root}>
+    <Grid className={styles.root}>
       <TextField
         id="standard-basic"
         placeholder="Search recommendations…"
@@ -38,6 +38,6 @@ export default function SearchBar(props: Props): JSX.Element {
         onChange={debouncedChangeHandler}
         className={styles.cta}
       />
-    </div>
+    </Grid>
   );
 }

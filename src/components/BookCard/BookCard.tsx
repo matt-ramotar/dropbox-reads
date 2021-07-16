@@ -8,7 +8,7 @@ import styles from "./BookCard.module.scss";
 import BookTagChip from "../BookTagChip";
 
 interface Props {
-  user?: SafeUser;
+  user: SafeUser;
   book: GodBook;
 }
 

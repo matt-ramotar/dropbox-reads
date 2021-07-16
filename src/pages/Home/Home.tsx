@@ -16,8 +16,8 @@ export default function Home(props: Props): JSX.Element {
 
   return (
     <Grid className={styles.root}>
-      {filterBooks([...props.books, ...props.books], Object.keys(filters)).map((book) => (
-        <BookCard key={book.title} user={props.user} book={book} />
+      {filterBooks([...props.books], Object.keys(filters)).map((book) => (
+        <BookCard key={book.id} user={props.user} book={book} />
       ))}
     </Grid>
   );
@@ -30,7 +30,9 @@ function filterBooks(books: GodBook[], tagIds: string[]): GodBook[] {
     const hasTag = (book: GodBook, tag: string) => {
       if (!book.bookTags) return false;
       for (const bookTag of book.bookTags) {
-        if (bookTag.tagId === tag) return true;
+        if (bookTag.tag.tag.toLowerCase() === tag.toLowerCase()) {
+          return true;
+        }
       }
       return false;
     };
