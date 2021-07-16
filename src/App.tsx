@@ -2,6 +2,7 @@ import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
 import { useRoutes } from "react-router";
 import "./App.scss";
+import getUserInfo from "./helpers/getUserInfo";
 import fetchBooks from "./lib/fetchBooks";
 import fetchTags from "./lib/fetchTags";
 import validateToken, { ValidateTokenSuccess } from "./lib/validateToken";
@@ -11,10 +12,10 @@ import { GodBook } from "./types/GodBook";
 import SafeUser from "./types/SafeUser";
 import { Tag } from "./types/Tag";
 
-function App({ user, tags, books }: { user: SafeUser | null, tags: Tag[], books: GodBook[] }): JSX.Element | null {
+function App({ user, tags, books, users }: { user: SafeUser | null, tags: Tag[], books: GodBook[], users: SafeUser[] }): JSX.Element | null {
   const isLoggedIn = Boolean(user);
 
-  const routing = useRoutes(routes(isLoggedIn, user, tags, books));
+  const routing = useRoutes(routes(isLoggedIn, user, tags, books, users));
 
   return (
     <ThemeProvider theme={theme}>
@@ -66,5 +67,5 @@ export default function AppHoc(): JSX.Element | null {
   }, [setBooks])
 
   if (isValidated === null || tags === null || books === null) return null;
-  return <App user={safeUser} tags={tags} books={books}/>;
+  return <App user={safeUser} tags={tags} books={books} users={getUserInfo(books)}/>;
 }

@@ -5,7 +5,6 @@ import React from "react";
 import { GodBook } from "../../types/GodBook";
 import SafeUser from "../../types/SafeUser";
 import styles from "./BookCard.module.scss";
-import BookTagChip from "../BookTagChip";
 
 interface Props {
   user: SafeUser;
@@ -30,10 +29,17 @@ export default function BookCard(props: Props): JSX.Element {
 
       <img src={props.book.coverImage} alt={props.book.title} />
 
-      <Box className={styles.description}>
-        <Typography variant="caption" className={styles.description}>
-          {description}
+      <Box className={styles.details}>
+        <Typography variant="h5">{props.book.title}</Typography>
+
+        <Typography variant="h6" className={styles.author}>
+          {props.book.author!.name ?? `${props.book.author!.firstName} ${props.book.author!.lastName}`}
         </Typography>
+
+        <Box className={styles.user_details}>
+          <img src={props.book.userAddedBy.picture!} alt={props.book.userAddedBy.username}/>
+          <Typography variant="caption">{`${props.book.userAddedBy.username}@`}</Typography>
+        </Box>
       </Box>
     </Grid>
   );

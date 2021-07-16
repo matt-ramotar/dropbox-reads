@@ -1,5 +1,6 @@
 import loadable from "@loadable/component";
 import { Box, Grid } from "@material-ui/core";
+import { useState } from "react";
 import Nav from "../../components/Nav";
 import SearchBar from "../../components/SearchBar";
 import SideNav from "../../components/SideNav/SideNav";
@@ -8,13 +9,13 @@ import { GodBook } from "../../types/GodBook";
 import SafeUser from "../../types/SafeUser";
 import { Tag } from "../../types/Tag";
 import styles from "./Home.module.scss";
-import { useState } from "react";
 
 interface Props {
   user: SafeUser;
   pageName: string;
   tags: Tag[];
   books: GodBook[];
+  users: SafeUser[];
 }
 
 export default function Home(props: Props): JSX.Element {
@@ -32,7 +33,7 @@ export default function Home(props: Props): JSX.Element {
       <SearchBar handleSearch={handleSearch} />
 
       <Box className={styles.container}>
-        <SideNav user={props.user} tags={props.tags} />
+        <SideNav user={props.user} tags={props.tags} users={props.users}/>
         <Box className={styles.main}>
           <Page user={props.user} books={books} />
         </Box>
