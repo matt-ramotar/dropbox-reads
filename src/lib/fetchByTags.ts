@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { Book } from "../types/Book";
 import { VERSION } from "../util/endpoints";
 import { API_URL } from "../util/secrets";
 import { GodBook } from "../types/GodBook";
