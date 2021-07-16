@@ -10,6 +10,7 @@ import GlobalNav from "../../components/BookDetailNav/GlobalNav";
 import SafeUser from "../../types/SafeUser";
 import {Grid, Typography} from "@material-ui/core";
 import {getFullName} from "../../helpers";
+import BookTagChip from '../../components/BookTagChip';
 
 export const BookDetail: FC<{user: SafeUser }> = (props) => {
   const { id } = useParams();
@@ -49,6 +50,10 @@ export const BookDetail: FC<{user: SafeUser }> = (props) => {
             <div>{getFullName(bookDetails.userAddedBy.firstName, bookDetails.userAddedBy.lastName)}</div>
           </div>
           <BookComments comments={bookDetails.bookComments} bookId={id} />
+        </div>
+
+        <div className={styles.bookTags}>
+          <BookTagChip key={bookDetails.id} user={bookDetails.userAddedBy} book={bookDetails} />
         </div>
       </div>
     ) : null
