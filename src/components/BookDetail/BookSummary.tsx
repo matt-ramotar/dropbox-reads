@@ -21,13 +21,13 @@ export const BookSummary: FC<BookSummaryProps> = ({bookDetails}) => {
             <Typography variant="h4">{bookDetails.title}</Typography>
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle2">By {getFullName(bookDetails.author!.firstName, bookDetails.author!.lastName)}</Typography>
-            <Typography variant="subtitle2">Recommended by {getFullName(bookDetails.userAddedBy.firstName, bookDetails.userAddedBy.lastName)}</Typography>
+            <Typography variant="h6">By {getFullName(bookDetails.author!.firstName, bookDetails.author!.lastName)}</Typography>
+            <Typography variant="h6">Recommended by {getFullName(bookDetails.userAddedBy.firstName, bookDetails.userAddedBy.lastName)}</Typography>
           </Grid>
           <Grid item xs className={styles.description}>
             <Grid item xs>
               {/*  TODO: add description; it's not currently in godbook ..?*/}
-              <Typography variant="body2">This is a book about a lot of things. The things range from this thing to that thing and it all ties back to another special thing.</Typography>
+              <Typography variant="body1">This is a book about a lot of things. The things range from this thing to that thing and it all ties back to another special thing.</Typography>
             </Grid>
           </Grid>
         </Grid>
