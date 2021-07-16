@@ -32,7 +32,7 @@ export default function BookCard(props: Props): JSX.Element {
       </Box>
 
       <Box className={styles.tags}>
-        <BookTagChip user={props.user} book={props.book} />
+        <BookTagChip key={props.book.id} user={props.user} book={props.book} />
       </Box>
     </Grid>
   );
