@@ -18,7 +18,7 @@ export const BookSummary: FC<BookSummaryProps> = ({bookDetails}) => {
         <Grid container className={styles.inner}>
           <img src={bookDetails.coverImage} alt={"Book Cover"} />
           <Grid item xs>
-            <Typography variant="h6">{bookDetails.title}</Typography>
+            <Typography variant="h4">{bookDetails.title}</Typography>
           </Grid>
           <Grid item xs>
             <Typography variant="subtitle2">By {getFullName(bookDetails.author!.firstName, bookDetails.author!.lastName)}</Typography>

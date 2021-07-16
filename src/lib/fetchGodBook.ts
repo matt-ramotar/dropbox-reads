@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { GodBook } from "../types/GodBook";
-import { GET_GOD_BOOK, VERSION } from "../util/endpoints";
+import { VERSION } from "../util/endpoints";
 import { API_URL } from "../util/secrets";
 
 export default async function fetchGodBook(id: string): Promise<GodBook> {
