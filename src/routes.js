@@ -36,7 +36,7 @@ const routes = (isLoggedIn, user, tags, books) => [
   },
   {
     path: "/books/:id/god",
-    element: <BookDetail />,
+    element: <BookDetail user={user}/>,
   }
 ];
 
