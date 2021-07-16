@@ -11,10 +11,6 @@ import SafeUser from "../types/SafeUser";
 
 // Interfaces
 interface AddBookState {
-  title: string;
-  author: string;
-  description: string;
-  tags: string[];
   fetchStatus: string;
   sendToDBStatus: string;
   googleData: GoogleData;
@@ -24,13 +20,6 @@ interface GoogleData {
   items: GoogleBookData[];
   kind: string;
   totalItems: number;
-}
-
-interface BookPayload {
-  title: string;
-  author: string;
-  description: string;
-  tags?: string[];
 }
 
 interface DataToDB {
@@ -45,10 +34,6 @@ interface SearchTerms {
 
 // Initial State
 const initialState = {
-  title: "",
-  author: "",
-  description: "",
-  tags: [],
   fetchStatus: "idle",
   sendToDBStatus: "idle",
   googleData: {
@@ -79,19 +64,6 @@ const bookFormSlice = createSlice({
   name: "addBookForm",
   initialState,
   reducers: {
-    setBook: (state, action: PayloadAction<BookPayload>) => {
-      const { title, author, description, tags } = action.payload;
-
-      state.title = title;
-      state.author = author;
-      state.description = description;
-      if (tags?.length) {
-        state.tags = tags;
-      }
-    },
-    setDescription: (state, action: PayloadAction<string>) => {
-      state.description = action.payload;
-    },
     setFetchStatusToIdle: (state) => {
       state.fetchStatus = "idle";
     },
@@ -126,7 +98,5 @@ const bookFormSlice = createSlice({
   },
 });
 
-// Actions
-export const { setBook, setDescription, setFetchStatusToIdle, setSendToDBStatusToIdle, clearGoogleData } = bookFormSlice.actions;
-
+export const { setFetchStatusToIdle, setSendToDBStatusToIdle, clearGoogleData } = bookFormSlice.actions;
 export default bookFormSlice.reducer;

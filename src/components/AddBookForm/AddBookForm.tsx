@@ -1,31 +1,24 @@
 import { FormControl, Input, InputLabel, Button, FormHelperText } from "@material-ui/core";
 import { useState, FormEvent, ChangeEvent } from "react";
 
-import { clearGoogleData, fetchBooksFromGoogle, setBook, setFetchStatusToIdle } from "../../store/addBook";
+import { clearGoogleData, fetchBooksFromGoogle, setFetchStatusToIdle } from "../../store/addBook";
 import { useAppDispatch, useAppSelector } from "../../util/hooks";
 import styles from "./AddBookForm.module.scss";
 
 interface FormState {
   title: string;
   author: string;
-  description: string;
-  tags: string[];
 }
 
 export default function AddBookForm(): JSX.Element {
   const dispatch = useAppDispatch();
   const fetchStatus = useAppSelector((state) => state.bookForm.fetchStatus);
-  const [formState, setFormState] = useState<FormState>({
-    title: "",
-    author: "",
-    description: "",
-    tags: [],
-  });
+  const [formState, setFormState] = useState<FormState>({ title: "", author: "" });
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setFormState({
       ...formState,
-      [e.target.name]: e.target.name === "tags" ? [...formState.tags, e.target.value] : e.target.value,
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -33,7 +26,6 @@ export default function AddBookForm(): JSX.Element {
     e.preventDefault();
 
     // Send to store
-    dispatch(setBook(formState));
     dispatch(
       fetchBooksFromGoogle({
         title: formState.title,
@@ -42,12 +34,7 @@ export default function AddBookForm(): JSX.Element {
     );
 
     // Reset form fields
-    setFormState({
-      title: "",
-      author: "",
-      description: "",
-      tags: [],
-    });
+    setFormState({ title: "", author: "" });
   }
 
   function handleNewSearchClick() {
