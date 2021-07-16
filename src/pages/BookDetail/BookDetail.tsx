@@ -38,7 +38,7 @@ export const BookDetail: FC<Record<string, unknown>> = () => {
           <BookSummary bookDetails={bookDetails} />
         </div>
         <div className={styles.main}>
-          <BookComments comments={bookDetails.bookComments}/>
+          <BookComments comments={bookDetails.bookComments} bookId={id} />
         </div>
       </div>
     ) : <div></div>

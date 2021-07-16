@@ -10,6 +10,7 @@ import theme from "./theme";
 import { GodBook } from "./types/GodBook";
 import SafeUser from "./types/SafeUser";
 import { Tag } from "./types/Tag";
+import 'semantic-ui-css/semantic.min.css'
 
 function App({ user, tags, books }: { user: SafeUser | null, tags: Tag[], books: GodBook[] }): JSX.Element | null {
   const isLoggedIn = Boolean(user);
