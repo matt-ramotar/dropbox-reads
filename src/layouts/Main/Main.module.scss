@@ -10,10 +10,10 @@
 
 .container {
   display: flex;
+  margin-top: 25px;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: t.$nav-height;
   height: calc(100vh - #{t.$nav-height});
   width: 100vw;
 }
