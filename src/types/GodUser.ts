@@ -1,4 +1,4 @@
-import { Action } from "history";
+import { Action } from "./Action";
 import { Book } from "./Book";
 import { Bookshelf } from "./Bookshelf";
 import { BookTag } from "./BookTag";
