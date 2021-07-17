@@ -1,11 +1,115 @@
 @use '../../theme' as t;
 
 .root {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+
   background-color: t.$color-background-main;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.left {
+  margin-right: 20px;
+  margin-top: 40px;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+
+  .profile_pic {
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      object-position: top;
+
+      border-radius: 50%;
+    }
+  }
+}
+
+.edit_profile_on {
+  button {
+    box-shadow: none;
+  }
+}
+
+.edit_profile_off {
+  display: none;
+}
+
+.right {
+  margin-left: 20px;
+  margin-top: 40px;
+  width: 90%;
+  margin-right: 40px;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+
+  .link {
+    display: flex;
+    flex-direction: row;
+
+    .label {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  .link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    .icon {
+      margin-right: 5px;
+    }
+  }
+}
+
+.heatmap {
+  max-width: 600px;
+}
+
+.react-calendar-heatmap {
+  height: 100%;
+}
+
+.react-calendar-heatmap {
+  .color-scale-1 {
+    fill: #d6e685;
+  }
+  .react-calendar-heatmap .color-scale-2 {
+    fill: #8cc665;
+  }
+  .react-calendar-heatmap .color-scale-3 {
+    fill: #44a340;
+  }
+  .react-calendar-heatmap .color-scale-4 {
+    fill: #1e6823;
+  }
 }

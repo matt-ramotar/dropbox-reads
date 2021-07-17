@@ -10,12 +10,13 @@
 
 .container {
   display: flex;
-  margin-top: calc(#{t.$nav-height} + 25px);
+  margin-top: t.$nav-height;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  height: calc(100vh - #{t.$nav-height} - 25px);
+  max-height: calc(100vh - #{t.$nav-height});
   width: 100vw;
+  flex-wrap: nowrap;
 }
 
 .main {
