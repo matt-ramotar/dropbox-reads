@@ -4,6 +4,7 @@ import bookFormSlice from "./addBook";
 import authReducer from "./auth";
 import filtersSlice from "./filters";
 import userFiltersSlice from "./userFilters";
+import viewsSlice from "./views";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     filters: filtersSlice,
     bookForm: bookFormSlice,
     userFilters: userFiltersSlice,
+    views: viewsSlice,
   },
   middleware: () => getDefaultMiddleware().concat(logger),
   devTools: process.env.REACT_APP_ENV !== "production",

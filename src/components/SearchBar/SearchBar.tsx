@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { TextField } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
-import { useMemo } from "react";
-import { fetchByTags } from "../../lib";
+import { Grid, TextField } from "@material-ui/core";
 import debounce from "lodash/debounce";
+import React, { useEffect, useMemo, useState } from "react";
+import { fetchByTags } from "../../lib";
 import styles from "./SearchBar.module.scss";
 
 interface Props {
@@ -33,7 +31,7 @@ export default function SearchBar(props: Props): JSX.Element {
     <Grid className={styles.root}>
       <TextField
         id="standard-basic"
-        placeholder="Search recommendations…"
+        placeholder="Search or jump to..."
         inputProps={{ "aria-label": "search" }}
         onChange={debouncedChangeHandler}
         className={styles.cta}

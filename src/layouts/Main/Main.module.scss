@@ -10,11 +10,11 @@
 
 .container {
   display: flex;
-  margin-top: 25px;
+  margin-top: calc(#{t.$nav-height} + 25px);
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  height: calc(100vh - #{t.$nav-height});
+  height: calc(100vh - #{t.$nav-height} - 25px);
   width: 100vw;
 }
 

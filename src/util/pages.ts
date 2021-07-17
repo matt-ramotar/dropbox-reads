@@ -5,3 +5,5 @@ export const SplashPage = "Splash";
 export const AddBookFormPage = "AddBook";
 export const BookDetailPage = "BookDetail";
 export const TagPage = "TagDetail";
+export const BookshelvesPage = "Bookshelves";
+export const BookshelfDetailPage = "BookshelfDetail";

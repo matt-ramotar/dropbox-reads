@@ -15,16 +15,13 @@ interface Props {
 
 export default function Main(props: Props): JSX.Element {
   const Page = loadable(() => import(`../../pages/${props.pageName}`));
-
   return (
     <Grid className={styles.root}>
       <Nav user={props.user} />
 
       <Box className={styles.container}>
-
-
         <Box className={styles.main}>
-          <Page user={props.user} books={props.books}/>
+          <Page user={props.user} books={props.books} tags={props.tags} />
         </Box>
       </Box>
     </Grid>

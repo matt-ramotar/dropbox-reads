@@ -1,6 +1,9 @@
+import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Grid, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import { fetchUserProfile } from "../../lib";
 import { GodUser } from "../../types/GodUser";
 import SafeUser from "../../types/SafeUser";
@@ -24,6 +27,7 @@ export default function Profile(props: Props): JSX.Element {
       try {
         const response = await fetchUserProfile(username);
         setGodUser(response);
+        console.log(response);
       } finally {
         setIsLoading(false);
       }
@@ -49,10 +53,15 @@ export default function Profile(props: Props): JSX.Element {
   return (
     <Grid className={styles.root}>
       <Typography>Profile</Typography>
-      {godUser.picture ? (
-        <img src={godUser.picture} alt={godUser.username} />
-      ) : null}
+      {godUser.picture ? <img src={godUser.picture} alt={godUser.username} /> : null}
       <Typography>{godUser.username}</Typography>
+
+      <Grid>
+        <Link to={`/${godUser.username}/bookshelves`}>
+          <FontAwesomeIcon icon={faBook} size="lg" />
+          <Typography>Bookshelves</Typography>
+        </Link>
+      </Grid>
     </Grid>
   );
 }
