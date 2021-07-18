@@ -1,4 +1,4 @@
-import { faBell, faBook, faCaretDown, faHashtag, faHome, faPlus, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faBook, faCaretDown, faHashtag, faHome, faPlus, faSearch, faSeedling, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, Grid, TextField } from "@material-ui/core";
 import React from "react";
@@ -61,6 +61,10 @@ export default function Nav(props: Props): JSX.Element {
       <Grid container className={styles.center}>
         <Link to="/">
           <FontAwesomeIcon icon={faHome} size="2x" className={styles.icon} />
+        </Link>
+
+        <Link to="/feed">
+          <FontAwesomeIcon icon={faSeedling} size="2x" className={styles.icon} />
         </Link>
 
         <Link to="/dropboxers">
