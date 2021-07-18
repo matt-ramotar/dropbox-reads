@@ -6,9 +6,11 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import FollowUserActionCard from "../../components/cards/actions/FollowUserActionCard";
 import getHeatMapData from "../../helpers/getHeatMapData";
 import { fetchUserProfile } from "../../lib";
 import { Action } from "../../types/Action";
+import { ActionType } from "../../types/ActionType";
 import { GodUser } from "../../types/GodUser";
 import SafeUser from "../../types/SafeUser";
 import styles from "./profile.module.scss";
@@ -124,12 +126,13 @@ export default function Profile(props: Props): JSX.Element {
 
         <Grid className={styles.activity}>
           <Box className={godUser.actions ? styles.actions_on : styles.actions_off}>
-            {godUser.actions?.map((action: Action) => (
-              <Box key={action.id}>
-                <Typography>{action.datetime}</Typography>
-                <Typography>{action.userId}</Typography>
-              </Box>
-            ))}
+            {godUser.actions
+              ?.sort((a, b) => (a.datetime > b.datetime ? -1 : 1))
+              .map((action: Action) => {
+                if (action.type === ActionType.FollowUser) return <FollowUserActionCard action={action} user={godUser} key={action.id} />;
+                if (action.type === ActionType.CreateBook) return <Typography>{action.bookId}</Typography>;
+                if (action.type === ActionType.CreateBookshelf) return <Typography>{action.bookshelfId}</Typography>;
+              })}
           </Box>
         </Grid>
       </Grid>
