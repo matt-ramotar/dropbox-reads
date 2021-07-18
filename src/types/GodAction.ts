@@ -3,17 +3,17 @@ import { Bookshelf } from "./Bookshelf";
 import { BookTag } from "./BookTag";
 import { Comment } from "./Comment";
 import { CommentReaction } from "./CommentReaction";
+import { GodUser } from "./GodUser";
 import { Review } from "./Review";
 import { ReviewReaction } from "./ReviewReaction";
-import SafeUser from "./SafeUser";
 import { Tag } from "./Tag";
 
 export interface GodAction {
   id: string;
   type: string;
   datetime: Date;
-  user?: SafeUser;
-  otherUser?: SafeUser;
+  user?: GodUser;
+  otherUser?: GodUser;
   book?: Book;
   bookshelf?: Bookshelf;
   bookTag?: BookTag;

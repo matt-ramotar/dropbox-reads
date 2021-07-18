@@ -2,13 +2,13 @@ import { Box, Button, Grid, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import fetchGodBook from "../../../../lib/fetchGodBook";
-import { Action } from "../../../../types/Action";
+import { GodAction } from "../../../../types/GodAction";
 import { GodBook } from "../../../../types/GodBook";
 import { GodUser } from "../../../../types/GodUser";
 import styles from "./CreateBookActionCard.module.scss";
 
 interface Props {
-  action: Action;
+  action: GodAction;
   user: GodUser;
 }
 
@@ -16,12 +16,13 @@ export default function CreateBookActionCard(props: Props): JSX.Element | null {
   const [godBook, setGodBook] = useState<null | GodBook>(null);
   useEffect(() => {
     async function fetchGodBookAsync() {
-      const response = await fetchGodBook(props.action.bookId!);
+      const response = await fetchGodBook(props.action.book!.id!);
+      console.log(response);
       setGodBook(response);
     }
-
-    fetchGodBookAsync();
-  }, [props.action.bookId]);
+    console.log(props);
+    if (props.action.book?.id) fetchGodBookAsync();
+  }, [props.action.book?.id]);
 
   if (!godBook) return null;
 

@@ -6,14 +6,15 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import CommentOnReviewActionCard from "../../components/cards/actions/CommentOnReviewActionCard";
 import CreateBookActionCard from "../../components/cards/actions/CreateBookActionCard";
 import CreateBookshelfActionCard from "../../components/cards/actions/CreateBookshelfActionCard";
 import FollowUserActionCard from "../../components/cards/actions/FollowUserActionCard";
 import getHeatMapData from "../../helpers/getHeatMapData";
 import { fetchUserProfile } from "../../lib";
-import { Action } from "../../types/Action";
+import fetchFeed from "../../lib/fetchFeed";
 import { ActionType } from "../../types/ActionType";
+import { FeedType } from "../../types/FeedType";
+import { GodAction } from "../../types/GodAction";
 import { GodUser } from "../../types/GodUser";
 import SafeUser from "../../types/SafeUser";
 import styles from "./profile.module.scss";
@@ -32,6 +33,9 @@ export default function Profile(props: Props): JSX.Element {
 
   const [godUser, setGodUser] = useState<GodUser | null>(null);
 
+  const [godActions, setGodActions] = useState<GodAction[] | null>(null);
+  const [offset, setOffset] = useState(0);
+
   useEffect(() => {
     fetchUserProfileAsync(username);
 
@@ -45,6 +49,16 @@ export default function Profile(props: Props): JSX.Element {
       }
     }
   }, [username, setGodUser, fetchUserProfile]);
+
+  useEffect(() => {
+    async function fetchProfileFeedAsync() {
+      const response = await fetchFeed(godUser!.id, FeedType.ProfileFeed, offset);
+      console.log(response);
+      setGodActions(response);
+    }
+
+    if (godUser?.id) fetchProfileFeedAsync();
+  }, [offset, setGodActions, godUser?.id]);
 
   if (isLoading) {
     return (
@@ -129,18 +143,17 @@ export default function Profile(props: Props): JSX.Element {
         </Box>
 
         <Grid className={styles.activity}>
-          <Box className={godUser.actions ? styles.actions_on : styles.actions_off}>
-            {godUser.actions
-              ?.sort((a, b) => (a.datetime > b.datetime ? -1 : 1))
-              .map((action: Action) => {
-                if (action.type === ActionType.FollowUser) return <FollowUserActionCard action={action} user={godUser} key={action.id} />;
-                if (action.type === ActionType.CreateBook) return <CreateBookActionCard action={action} user={godUser} key={action.id} />;
-                if (action.type === ActionType.CreateBookshelf)
-                  return <CreateBookshelfActionCard action={action} user={godUser} key={action.id} />;
-                if (action.type === ActionType.AddCommentToReview)
-                  return <CommentOnReviewActionCard action={action} user={godUser} mainUser={props.user} key={action.id} />;
-                else return <Typography>{action.type}</Typography>;
-              })}
+          <Box className={godActions ? styles.actions_on : styles.actions_off}>
+            {godActions?.map((action: GodAction) => {
+              if (action.type === ActionType.FollowUser)
+                return <FollowUserActionCard action={action} user={godUser} otherUser={action.otherUser!} key={action.id} />;
+              if (action.type === ActionType.CreateBook) return <CreateBookActionCard action={action} user={godUser} key={action.id} />;
+              if (action.type === ActionType.CreateBookshelf)
+                return <CreateBookshelfActionCard action={action} user={godUser} otherUser={action.otherUser!} key={action.id} />;
+              // if (action.type === ActionType.AddCommentToReview)
+              //   return <CommentOnReviewActionCard action={action} user={godUser} mainUser={props.user} key={action.id} />;
+              else return <Typography>{action.type}</Typography>;
+            })}
           </Box>
         </Grid>
       </Grid>

@@ -1,29 +1,16 @@
 import { Box, Button, Grid, Typography } from "@material-ui/core";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import fetchGodUserById from "../../../../lib/fetchGodUserById";
-import { Action } from "../../../../types/Action";
+import { GodAction } from "../../../../types/GodAction";
 import { GodUser } from "../../../../types/GodUser";
 import styles from "./FollowUserActionCard.module.scss";
 
 interface Props {
-  action: Action;
+  action: GodAction;
   user: GodUser;
+  otherUser: GodUser;
 }
 
 export default function FollowUserActionCard(props: Props): JSX.Element | null {
-  const [otherUser, setOtherUser] = useState<null | GodUser>(null);
-  useEffect(() => {
-    async function fetchGodUserByIdAsync() {
-      const response = await fetchGodUserById(props.action.otherUserId!);
-      setOtherUser(response);
-    }
-
-    fetchGodUserByIdAsync();
-  }, [props.action.otherUserId]);
-
-  if (!otherUser) return null;
-
   return (
     <Grid className={styles.root}>
       <Box className={styles.about_container}>
@@ -38,8 +25,8 @@ export default function FollowUserActionCard(props: Props): JSX.Element | null {
 
             <Typography className={styles.text}>started following</Typography>
 
-            <Link to={`/${otherUser.username}`}>
-              <Typography className={styles.text_dynamic}>{`${otherUser.firstName} ${otherUser.lastName}`}</Typography>
+            <Link to={`/${props.otherUser.username}`}>
+              <Typography className={styles.text_dynamic}>{`${props.otherUser.firstName} ${props.otherUser.lastName}`}</Typography>
             </Link>
           </Box>
           <Box className={styles.datetime}>
@@ -50,13 +37,13 @@ export default function FollowUserActionCard(props: Props): JSX.Element | null {
 
       <Box className={styles.main}>
         <Box className={styles.user_container}>
-          <img src={otherUser.picture} alt={otherUser.username} className={styles.avatar} />
+          <img src={props.otherUser.picture} alt={props.otherUser.username} className={styles.avatar} />
 
           <Box className={styles.otherUserInfo}>
-            <Typography className={styles.text_dynamic}>{`${otherUser.firstName} ${otherUser.lastName}`}</Typography>
-            <Typography>{otherUser.role?.role}</Typography>
-            <Typography>{`${otherUser.usersFollowedBy?.length} ${
-              otherUser.usersFollowedBy?.length === 1 ? `follower` : `followers`
+            <Typography className={styles.text_dynamic}>{`${props.otherUser.firstName} ${props.otherUser.lastName}`}</Typography>
+            <Typography>{props.otherUser.role?.role}</Typography>
+            <Typography>{`${props.otherUser.usersFollowedBy?.length} ${
+              props.otherUser.usersFollowedBy?.length === 1 ? `follower` : `followers`
             }`}</Typography>
           </Box>
         </Box>

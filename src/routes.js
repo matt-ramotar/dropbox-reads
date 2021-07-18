@@ -11,6 +11,7 @@ import {
   BookshelvesPage,
   DropboxersPage,
   ExplorePage,
+  FeedPage,
   HomePage,
   ProfilePage,
   SplashPage,
@@ -30,6 +31,11 @@ const routes = (isLoggedIn, user, tags, books, users) => [
   {
     path: "dropboxers",
     element: isLoggedIn ? <MainLayout user={user} pageName={DropboxersPage} /> : <Navigate to="/" />,
+  },
+
+  {
+    path: "feed",
+    element: isLoggedIn ? <MainLayout user={user} pageName={FeedPage} /> : <Navigate to="/" />,
   },
 
   {
