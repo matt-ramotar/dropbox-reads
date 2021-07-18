@@ -7,6 +7,7 @@ import "react-calendar-heatmap/dist/styles.css";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import CreateBookActionCard from "../../components/cards/actions/CreateBookActionCard";
+import CreateBookshelfActionCard from "../../components/cards/actions/CreateBookshelfActionCard";
 import FollowUserActionCard from "../../components/cards/actions/FollowUserActionCard";
 import getHeatMapData from "../../helpers/getHeatMapData";
 import { fetchUserProfile } from "../../lib";
@@ -133,7 +134,8 @@ export default function Profile(props: Props): JSX.Element {
               .map((action: Action) => {
                 if (action.type === ActionType.FollowUser) return <FollowUserActionCard action={action} user={godUser} key={action.id} />;
                 if (action.type === ActionType.CreateBook) return <CreateBookActionCard action={action} user={godUser} key={action.id} />;
-                if (action.type === ActionType.CreateBookshelf) return <Typography>{action.type}</Typography>;
+                if (action.type === ActionType.CreateBookshelf)
+                  return <CreateBookshelfActionCard action={action} user={godUser} key={action.id} />;
               })}
           </Box>
         </Grid>
