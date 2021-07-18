@@ -9,6 +9,7 @@ import {
   BookDetailPage,
   BookshelfDetailPage,
   BookshelvesPage,
+  DropboxersPage,
   ExplorePage,
   HomePage,
   ProfilePage,
@@ -25,6 +26,10 @@ const routes = (isLoggedIn, user, tags, books, users) => [
         element: <MainLayout user={user} pageName={BookshelfDetailPage} />,
       },
     ],
+  },
+  {
+    path: "dropboxers",
+    element: isLoggedIn ? <MainLayout user={user} pageName={DropboxersPage} /> : <Navigate to="/" />,
   },
 
   {

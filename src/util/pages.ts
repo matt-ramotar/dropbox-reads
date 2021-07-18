@@ -7,3 +7,4 @@ export const BookDetailPage = "BookDetail";
 export const TagPage = "TagDetail";
 export const BookshelvesPage = "Bookshelves";
 export const BookshelfDetailPage = "BookshelfDetail";
+export const DropboxersPage = "Dropboxers";
