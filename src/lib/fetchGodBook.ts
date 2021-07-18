@@ -4,11 +4,16 @@ import { VERSION } from "../util/endpoints";
 import { API_URL } from "../util/secrets";
 
 export default async function fetchGodBook(id: string): Promise<GodBook> {
-  const response: AxiosResponse = await axios.get(buildUrl(id));
+  try {
+    const response: AxiosResponse = await axios.get(buildUrl(id));
 
-  const data: GodBook = response.data;
+    const data: GodBook = response.data;
 
-  return data;
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 }
 
 function buildUrl(id: string): string {
