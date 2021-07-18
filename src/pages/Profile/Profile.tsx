@@ -63,7 +63,8 @@ export default function Profile(props: Props): JSX.Element {
     <Grid container className={styles.root}>
       <Grid className={styles.left}>
         <Box className={styles.profile_pic}>{godUser.picture ? <img src={godUser.picture} alt={godUser.username} /> : null}</Box>
-        <Typography>{godUser.username}</Typography>
+        <Typography>{`@${godUser.username}`}</Typography>
+        <Typography>{godUser.role?.role}</Typography>
         <Box className={isRealUser ? styles.edit_profile_on : styles.edit_profile_off}>
           <Button className={styles.button} variant="contained" fullWidth>
             Edit Profile
@@ -130,8 +131,8 @@ export default function Profile(props: Props): JSX.Element {
               ?.sort((a, b) => (a.datetime > b.datetime ? -1 : 1))
               .map((action: Action) => {
                 if (action.type === ActionType.FollowUser) return <FollowUserActionCard action={action} user={godUser} key={action.id} />;
-                if (action.type === ActionType.CreateBook) return <Typography>{action.bookId}</Typography>;
-                if (action.type === ActionType.CreateBookshelf) return <Typography>{action.bookshelfId}</Typography>;
+                if (action.type === ActionType.CreateBook) return <Typography>{action.type}</Typography>;
+                if (action.type === ActionType.CreateBookshelf) return <Typography>{action.type}</Typography>;
               })}
           </Box>
         </Grid>
