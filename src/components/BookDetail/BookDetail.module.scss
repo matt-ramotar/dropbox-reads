@@ -83,16 +83,6 @@
 .btn:hover {
   /*on hover... should it fill in?*/
 }
-.recc {
-  img {
-    height: 175px;
-    width: 202px;
-    border-radius: 25px;
-    object-fit: cover;
-    align-self: center;
-    margin-bottom: 15px;
-  }
-}
 
 h5 {
   font-weight: 600;
@@ -108,4 +98,27 @@ h5 {
 .commentform {
   padding-top: 50px;
   padding-bottom: 15px;
+  width: 60%;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+.comment {
+  margin-left: 20px;
+}
+
+.reccpic {
 }

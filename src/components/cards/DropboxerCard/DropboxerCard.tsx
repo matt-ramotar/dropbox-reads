@@ -2,6 +2,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { GodUser } from "../../../types/GodUser";
+import { DefaultAvatar } from "../../../util/defaults";
 import styles from "./DropboxerCard.module.scss";
 
 interface Props {
@@ -11,7 +12,7 @@ export default function DropboxerCard(props: Props): JSX.Element {
   const [src, setSrc] = useState(props.user.picture);
 
   const onError = () => {
-    setSrc("https://dropbox-appbox-static.s3.amazonaws.com/static/dropabout/img/nophoto.png");
+    setSrc(DefaultAvatar);
   };
   return (
     <Grid className={styles.root}>

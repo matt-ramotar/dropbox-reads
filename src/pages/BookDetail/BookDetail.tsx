@@ -1,62 +1,64 @@
 import { Typography } from "@material-ui/core";
-import React, { FC } from 'react';
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { BookComments } from "../../components/BookDetail/BookComments";
 import { BookSummary } from "../../components/BookDetail/BookSummary";
 import { Upvotes } from "../../components/BookDetail/Upvotes";
-import BookTagChip from '../../components/BookTagChip';
-import { getFullName } from "../../helpers";
+import BookTagChip from "../../components/BookTagChip";
 import fetchGodBook from "../../lib/fetchGodBook";
 import { GodBook } from "../../types/GodBook";
 import SafeUser from "../../types/SafeUser";
+import { DefaultAvatar } from "../../util/defaults";
 import styles from "./BookDetail.module.scss";
 
+interface Props {
+  user: SafeUser;
+}
 
-export const BookDetail: FC<{user: SafeUser }> = (props) => {
+export default function BookDetail(props: Props): JSX.Element | null {
   const { id } = useParams();
-  const [bookDetails, setBookDetails] = React.useState<GodBook | null>(null);
+  const [bookDetails, setBookDetails] = useState<GodBook | null>(null);
+  const [src, setSrc] = useState(DefaultAvatar);
 
-    React.useEffect(() => {
-      loadBookDetailsAsync(id);
+  useEffect(() => {
+    loadBookDetailsAsync(id);
 
-      async function loadBookDetailsAsync(id: string) {
-        try {
-            const res = await fetchGodBook(id);
-            setBookDetails(res);
-        } catch (error) {
-            console.log(error);
-        }
+    async function loadBookDetailsAsync(id: string) {
+      try {
+        const res = await fetchGodBook(id);
+        setBookDetails(res);
+        setSrc(res.userAddedBy.picture!);
+      } catch (error) {
+        console.log(error);
       }
-    }, [id, setBookDetails])
+    }
+  }, [id, setBookDetails]);
 
-    React.useEffect(() => {
-        console.log("book details are ", bookDetails)
-    }, [bookDetails])
+  const onError = () => setSrc(DefaultAvatar);
 
-  return (
-    // <Grid className={styles.grid}>
-    bookDetails ? (
-      <div>
-        {/* <div className={styles.header}><GlobalNav user={props.user} /></div> */}
-        <div className={styles.sidebar}>
-          <Upvotes bookUpvotes={bookDetails.bookUpvotes ? bookDetails.bookUpvotes : []}/>
-          <BookSummary bookDetails={bookDetails} />
-        </div>
-        <div className={styles.main}>
+  if (!bookDetails || !props.user) return null;
 
-          <div className={styles.recc}>
-            <Typography variant='h5'>Recommended by</Typography>
-            {/*<Typography variant='subtitle2'>{getFullName(bookDetails.userAddedBy.firstName, bookDetails.userAddedBy.lastName)}</Typography>*/}
-            {bookDetails.userAddedBy.picture ? <img className={styles.reccpic} src={bookDetails.userAddedBy.picture} alt="Recommended By"/> : null}
-            <div>{getFullName(bookDetails.userAddedBy.firstName, bookDetails.userAddedBy.lastName)}</div>
-          </div>
-          <BookComments comments={bookDetails.bookComments} bookId={id} />
-        </div>
-
-        <div className={styles.bookTags}>
-          <BookTagChip key={bookDetails.id} user={bookDetails.userAddedBy} book={bookDetails} />
-        </div>
+  return bookDetails ? (
+    <div>
+      <div className={styles.sidebar}>
+        <Upvotes bookUpvotes={bookDetails.bookUpvotes ? bookDetails.bookUpvotes : []} />
+        <BookSummary bookDetails={bookDetails} />
       </div>
-    ) : null
-  );
+      <div className={styles.main}>
+        <div className={styles.recc}>
+          <Typography variant="h5">Recommended by</Typography>
+
+          <Link to={`/${props.user.username}`}>
+            <img src={src!} onError={onError} alt="Recommended By" />
+          </Link>
+        </div>
+        <BookComments comments={bookDetails.bookComments} bookId={id} user={props.user} />
+      </div>
+
+      <div className={styles.bookTags}>
+        <BookTagChip key={bookDetails.id} user={bookDetails.userAddedBy} book={bookDetails} />
+      </div>
+    </div>
+  ) : null;
 }

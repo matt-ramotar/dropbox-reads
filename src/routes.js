@@ -50,6 +50,10 @@ const routes = (isLoggedIn, user, tags, books, users) => [
     path: ":username",
     element: isLoggedIn ? <MainLayout user={user} pageName={ProfilePage} /> : <Navigate to="/" />,
   },
+  {
+    path: "books/:id",
+    element: isLoggedIn ? <MainLayout user={user} pageName={BookDetailPage} /> : <Navigate to="/" />,
+  },
 
   {
     path: ":username/bookshelves",
@@ -67,10 +71,6 @@ const routes = (isLoggedIn, user, tags, books, users) => [
   {
     path: "add-book",
     element: isLoggedIn ? <MainLayout user={user} pageName={AddBookFormPage} /> : <Navigate to="/" />,
-  },
-  {
-    path: "books/:id/god",
-    element: isLoggedIn ? <MainLayout user={user} pageName={BookDetailPage} /> : <Navigate to="/" />,
   },
 ];
 

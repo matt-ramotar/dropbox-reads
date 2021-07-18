@@ -1,88 +1,57 @@
-import React, {FC, useState} from 'react';
-import { GodComment } from "../../types/GodComment";
-import styles from "./BookDetail.module.scss";
-import { Comment, Form } from 'semantic-ui-react'
-import {getFullName} from "../../helpers";
-import postComment from "../../lib/postComment";
-import { AxiosResponse } from "axios";
 import { Typography } from "@material-ui/core";
+import React, { FC, useEffect, useState } from "react";
+import { CommentGroup, Form } from "semantic-ui-react";
+import BookComment from "../../components/comments/BookComment";
+import createComment from "../../lib/createComment";
+import { GodComment } from "../../types/GodComment";
 import SafeUser from "../../types/SafeUser";
+import styles from "./BookDetail.module.scss";
 
-interface BookSummaryProps {
+interface Props {
+  user: SafeUser;
   comments?: GodComment[];
   bookId: string;
 }
 
-export const BookComments: FC<BookSummaryProps> = (props) => {
-  const [formText, setFormText] = useState('');
+export const BookComments: FC<Props> = (props) => {
+  const [formText, setFormText] = useState("");
   // Comments will include comments from props (derived from GodBook) as well as any newly posted comments.
-  // Refactor to fetch updated comments instead of this workaround.
-  const [allComments, setAllComments] = useState<GodComment[] | undefined>(undefined);
+  const [comments, setComments] = useState<GodComment[] | null>(null);
+  const [numComments, setNumComments] = useState(props.comments?.length ?? 0);
 
-   const handleTextChange = (event: any) => {
-     setFormText(event.target.value)
-   }
+  const handleTextChange = (event: any) => {
+    setFormText(event.target.value);
+  };
 
-   async function postCommentAsync(userId: string, bookId: string, commentBody: string) {
-     try {
-       const res: AxiosResponse = await postComment(userId, bookId, commentBody);
-     } catch (error) {
-       console.log(error);
-     }
-   }
+  const handleCreateComment = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const newComment = await createComment(props.user.id, props.bookId, formText);
 
-   const handleSubmit = (event: any) => {
-     // TODO: Replace hardcode with real logged in user data
-     postCommentAsync("60ee057d77bfa300155bb3ec", props.bookId, formText)
-     const user: SafeUser = {
-       id: "",
-       firstName: "Angela",
-       lastName: "Chan",
-       email: "",
-       username: "",
-       picture: "",
-       isLoggedIn: true,
-     }
-     const newComment: GodComment = {
-       id: "",
-       user: user,
-       body: formText,
-     }
-     allComments ? setAllComments(allComments.concat([newComment])) : setAllComments([newComment]);
-     setFormText("");
-     event.preventDefault()
-   }
+    const nextComments = comments ? [...comments, newComment] : [newComment];
+    const nextNumComments = nextComments.length;
 
-  React.useEffect(() => {
-    if (props.comments) {
-      setAllComments(props.comments);
-    }
-  }, [props.comments])
+    setComments(nextComments);
+    setNumComments(nextNumComments);
+    setFormText("");
+    event.preventDefault();
+  };
 
-    // TODO: might need to replace with our own default image
-    const defaultAvatarUrl = `https://react.semantic-ui.com/images/wireframe/square-image.png`
-    return (
-      <div className={styles.discussion}>
-        <Typography variant='h5'>Discuss with other Dropboxers</Typography>
-        <Comment.Group size='large'>
-          {allComments ?
-            allComments.map((comment: GodComment) => (
-              <div key={comment.id}>
-                <Comment>
-                  <Comment.Avatar src={comment.user.picture ? comment.user.picture : defaultAvatarUrl} />
-                  <Comment.Content>
-                    <Comment.Author as='a'>{getFullName(comment.user.firstName, comment.user.lastName)}</Comment.Author>
-                    <Comment.Text>{comment.body}</Comment.Text>
-                  </Comment.Content>
-                </Comment>
-              </div>)
-            ) : "Leave a comment!"}
-            <Form className={styles.commentform}>
-              <Form.TextArea size='large' value={formText} onChange={handleTextChange}/>
-              <Form.Button content='Post' labelPosition='left' icon='edit' onClick={handleSubmit} />
-            </Form>
-        </Comment.Group>
-      </div>
-    )
-}
+  useEffect(() => {
+    if (props.comments) setComments(props.comments);
+  }, [props.comments]);
 
+  return (
+    <div className={styles.discussion}>
+      <Typography variant="h5">Discuss with other Dropboxers</Typography>
+
+      <CommentGroup className={styles.comments} size="large">
+        {comments?.map((comment: GodComment) => (
+          <BookComment key={comment.id} comment={comment} />
+        ))}
+        <Form className={styles.commentform}>
+          <Form.TextArea size="large" value={formText} onChange={handleTextChange} />
+          <Form.Button content="Post" labelPosition="left" icon="edit" onClick={handleCreateComment} />
+        </Form>
+      </CommentGroup>
+    </div>
+  );
+};

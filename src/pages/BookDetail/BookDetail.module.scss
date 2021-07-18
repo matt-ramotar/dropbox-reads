@@ -27,7 +27,16 @@
   margin-left: 80px;
   font-family: sans-serif;
   margin-top: 25px;
-  //font-weight: bold;
+
+  img {
+    height: 120px;
+    width: 120px;
+    border-radius: 25px;
+    object-fit: cover;
+    object-position: top;
+    align-self: center;
+    margin-bottom: 15px;
+  }
 }
 
 .reccpic {
