@@ -18,7 +18,7 @@ import {
   TagPage,
 } from "./util/pages";
 
-const routes = (isLoggedIn, user, tags, books, users) => [
+const routes = (isLoggedIn, user) => [
   {
     path: "i",
     children: [
@@ -40,7 +40,7 @@ const routes = (isLoggedIn, user, tags, books, users) => [
 
   {
     path: "home",
-    element: isLoggedIn ? <HomeLayout user={user} pageName={HomePage} tags={tags} books={books} users={users} /> : <Navigate to="/" />,
+    element: isLoggedIn ? <HomeLayout user={user} pageName={HomePage} /> : <Navigate to="/" />,
   },
   {
     path: "explore",
@@ -57,7 +57,7 @@ const routes = (isLoggedIn, user, tags, books, users) => [
 
   {
     path: ":username/bookshelves",
-    element: isLoggedIn ? <MainLayout user={user} tags={tags} pageName={BookshelvesPage} /> : <Navigate to="/" />,
+    element: isLoggedIn ? <MainLayout user={user} pageName={BookshelvesPage} /> : <Navigate to="/" />,
   },
   { path: "login", element: <Navigate to="/" /> },
   {

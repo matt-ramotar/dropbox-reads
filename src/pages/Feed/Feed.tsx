@@ -1,7 +1,8 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Box, Grid, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import CreateBookActionCard from "../../components/cards/actions/CreateBookActionCard";
 import FollowUserActionCard from "../../components/cards/actions/FollowUserActionCard";
+import DropboxReadsSpinner from "../../components/spinners/DropboxReadsSpinner";
 import fetchFeed from "../../lib/fetchFeed";
 import { ActionType } from "../../types/ActionType";
 import { FeedType } from "../../types/FeedType";
@@ -15,19 +16,24 @@ interface Props {
 
 export default function FeedPage(props: Props): JSX.Element | null {
   const [feed, setFeed] = useState<GodAction[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     async function fetchFeedAsync() {
       const response = await fetchFeed(props.user.id, FeedType.MainFeed, offset);
-      console.log(response);
       setFeed(response);
+      setIsLoading(false);
     }
-
     fetchFeedAsync();
   }, [props.user.id]);
 
-  if (!feed) return null;
+  if (!feed || isLoading)
+    return (
+      <Box className={styles.loader}>
+        <DropboxReadsSpinner isLoading={isLoading} />
+      </Box>
+    );
 
   return (
     <Grid className={styles.root}>

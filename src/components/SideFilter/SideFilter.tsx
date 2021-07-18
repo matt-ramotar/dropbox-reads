@@ -1,23 +1,36 @@
-import { Box, Grid, Typography } from "@material-ui/core";
-import React from "react";
+import { Grid, Typography, useTheme } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import fetchTags from "../../lib/fetchTags";
 import { Tag } from "../../types/Tag";
-import TagCheckbox from "../TagCheckbox";
 import styles from "./SideFilter.module.scss";
 
-interface Props {
-  tags: Tag[];
-}
+export default function SideFilter(): JSX.Element | null {
+  const [tags, setTags] = useState<Tag[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const theme = useTheme();
 
-export default function SideFilter(props: Props): JSX.Element {
+  useEffect(() => {
+    async function fetchTagsAsync() {
+      const response = await fetchTags();
+      setTags(response);
+      setIsLoading(false);
+    }
+    fetchTagsAsync();
+  }, []);
+
+  if (isLoading) return null;
+
   return (
     <Grid container className={styles.root}>
-      <Typography variant='h6' className={styles.heading}>Filter by tags</Typography>
+      <Typography variant="h6" className={styles.heading}>
+        Filter by tags
+      </Typography>
       <Grid className={styles.main}>
-
-
-        <Box className={styles.tags}>
-          {props.tags.map(tag => <TagCheckbox key={tag.tag} tag={tag} />)}
-        </Box>
+        {/* <Box className={styles.tags}>
+          {props.tags.map((tag) => (
+            <TagCheckbox key={tag.tag} tag={tag} />
+          ))}
+        </Box> */}
       </Grid>
     </Grid>
   );

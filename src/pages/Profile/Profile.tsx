@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import CreateBookActionCard from "../../components/cards/actions/CreateBookActionCard";
 import CreateBookshelfActionCard from "../../components/cards/actions/CreateBookshelfActionCard";
 import FollowUserActionCard from "../../components/cards/actions/FollowUserActionCard";
+import DropboxReadsSpinner from "../../components/spinners/DropboxReadsSpinner";
 import getHeatMapData from "../../helpers/getHeatMapData";
 import { fetchUserProfile } from "../../lib";
 import fetchFeed from "../../lib/fetchFeed";
@@ -40,21 +41,17 @@ export default function Profile(props: Props): JSX.Element {
     fetchUserProfileAsync(username);
 
     async function fetchUserProfileAsync(username: string) {
-      try {
-        const response = await fetchUserProfile(username);
-        setGodUser(response);
-        console.log(response);
-      } finally {
-        setIsLoading(false);
-      }
+      const response = await fetchUserProfile(username);
+      setGodUser(response);
     }
   }, [username, setGodUser, fetchUserProfile]);
 
   useEffect(() => {
     async function fetchProfileFeedAsync() {
       const response = await fetchFeed(godUser!.id, FeedType.ProfileFeed, offset);
-      console.log(response);
+
       setGodActions(response);
+      setIsLoading(false);
     }
 
     if (godUser?.id) fetchProfileFeedAsync();
@@ -62,9 +59,9 @@ export default function Profile(props: Props): JSX.Element {
 
   if (isLoading) {
     return (
-      <Grid className={styles.grid}>
-        <Typography>Loading...</Typography>
-      </Grid>
+      <Box className={styles.loader}>
+        <DropboxReadsSpinner isLoading={isLoading} />
+      </Box>
     );
   }
 

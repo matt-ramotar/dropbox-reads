@@ -8,6 +8,13 @@
   background-color: #3300ff;
 }
 
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+}
+
 .sidebar {
   height: 100%;
   position: fixed;
