@@ -6,6 +6,7 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import CommentOnReviewActionCard from "../../components/cards/actions/CommentOnReviewActionCard";
 import CreateBookActionCard from "../../components/cards/actions/CreateBookActionCard";
 import CreateBookshelfActionCard from "../../components/cards/actions/CreateBookshelfActionCard";
 import FollowUserActionCard from "../../components/cards/actions/FollowUserActionCard";
@@ -136,6 +137,9 @@ export default function Profile(props: Props): JSX.Element {
                 if (action.type === ActionType.CreateBook) return <CreateBookActionCard action={action} user={godUser} key={action.id} />;
                 if (action.type === ActionType.CreateBookshelf)
                   return <CreateBookshelfActionCard action={action} user={godUser} key={action.id} />;
+                if (action.type === ActionType.AddCommentToReview)
+                  return <CommentOnReviewActionCard action={action} user={godUser} mainUser={props.user} key={action.id} />;
+                else return <Typography>{action.type}</Typography>;
               })}
           </Box>
         </Grid>
