@@ -56,26 +56,33 @@
   }
 }
 
-.main {
-  width: 400px;
-
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
   background-color: t.$color-gray-lighter;
   border-radius: 12px;
   box-shadow: 5px;
   margin-left: 100px;
-  padding: 10px;
 
+  width: 400px;
+}
+
+.main {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  position: relative;
 
   .avatar {
     width: 60px;
     height: 60px;
   }
 
-  .otherUserInfo {
+  .godBookshelfInfo {
     margin-left: 10px;
 
     .text_dynamic {
@@ -84,14 +91,64 @@
   }
 }
 
+.cover {
+  height: 140px;
+  width: 400px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
 .user_container {
   display: flex;
   flex-direction: row;
+}
+
+.mainImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center bottom;
+  position: absolute;
+  top: 110px;
+  border: 2px solid t.$color-background-main;
 }
 
 .action {
   button {
     box-shadow: 1px;
     background-color: t.$color-background-white;
+  }
+}
+
+.chips {
+  margin-bottom: 10px;
+}
+.chip {
+  margin-right: 4px;
+}
+
+.bookshelf_container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5px;
+
+  .godBookshelfInfo {
+    margin-top: 30px;
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .text_dynamic {
+      font-weight: bold;
+      margin-right: 6px;
+    }
+
+    .text_dynamic_caption {
+    }
   }
 }
