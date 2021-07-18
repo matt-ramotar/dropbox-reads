@@ -1,22 +1,17 @@
 import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
 import { useRoutes } from "react-router";
+import "semantic-ui-css/semantic.min.css";
 import "./App.scss";
-import getUserInfo from "./helpers/getUserInfo";
-import fetchBooks from "./lib/fetchBooks";
-import fetchTags from "./lib/fetchTags";
 import validateToken, { ValidateTokenSuccess } from "./lib/validateToken";
 import routes from "./routes.js";
 import theme from "./theme";
-import { GodBook } from "./types/GodBook";
 import SafeUser from "./types/SafeUser";
-import { Tag } from "./types/Tag";
-import 'semantic-ui-css/semantic.min.css'
 
-function App({ user, tags, books, users }: { user: SafeUser | null, tags: Tag[], books: GodBook[], users: SafeUser[] }): JSX.Element | null {
+function App({ user }: { user: SafeUser | null }): JSX.Element | null {
   const isLoggedIn = Boolean(user);
 
-  const routing = useRoutes(routes(isLoggedIn, user, tags, books, users));
+  const routing = useRoutes(routes(isLoggedIn, user));
 
   return (
     <ThemeProvider theme={theme}>
@@ -28,8 +23,6 @@ function App({ user, tags, books, users }: { user: SafeUser | null, tags: Tag[],
 export default function AppHoc(): JSX.Element | null {
   const [isValidated, setIsValidated] = useState<boolean | null>(null);
   const [safeUser, setSafeUser] = useState<SafeUser | null>(null);
-  const [tags, setTags] = useState<Tag[] | null>(null)
-  const [books, setBooks] = useState<GodBook[] | null>(null)
 
   useEffect(() => {
     const localToken = localStorage.getItem("TOKEN");
@@ -48,25 +41,6 @@ export default function AppHoc(): JSX.Element | null {
     }
   }, [setIsValidated]);
 
-  useEffect(() => {
-    async function loadTagsAsync() {
-      const tagsResponse = await fetchTags()
-      setTags(tagsResponse)
-    }
-
-    loadTagsAsync()
-  }, [setTags])
-
-  useEffect(() => {
-    async function loadBooksAsync() {
-      const booksResponse = await fetchBooks()
-      setBooks(booksResponse)
-    }
-
-    loadBooksAsync()
-
-  }, [setBooks])
-
-  if (isValidated === null || tags === null || books === null) return null;
-  return <App user={safeUser} tags={tags} books={books} users={getUserInfo(books)}/>;
+  if (isValidated === null) return null;
+  return <App user={safeUser} />;
 }

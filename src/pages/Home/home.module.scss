@@ -5,3 +5,10 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+}

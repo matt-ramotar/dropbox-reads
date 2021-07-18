@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { BookComments } from "../../components/BookDetail/BookComments";
 import { BookSummary } from "../../components/BookDetail/BookSummary";
 import { Upvotes } from "../../components/BookDetail/Upvotes";
 import BookTagChip from "../../components/BookTagChip";
+import DropboxReadsSpinner from "../../components/spinners/DropboxReadsSpinner";
 import fetchGodBook from "../../lib/fetchGodBook";
 import { GodBook } from "../../types/GodBook";
 import SafeUser from "../../types/SafeUser";
@@ -19,25 +20,28 @@ interface Props {
 export default function BookDetail(props: Props): JSX.Element | null {
   const { id } = useParams();
   const [bookDetails, setBookDetails] = useState<GodBook | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [src, setSrc] = useState(DefaultAvatar);
 
   useEffect(() => {
     loadBookDetailsAsync(id);
 
     async function loadBookDetailsAsync(id: string) {
-      try {
-        const res = await fetchGodBook(id);
-        setBookDetails(res);
-        setSrc(res.userAddedBy.picture!);
-      } catch (error) {
-        console.log(error);
-      }
+      const res = await fetchGodBook(id);
+      setBookDetails(res);
+      setSrc(res.userAddedBy.picture!);
+      setIsLoading(false);
     }
   }, [id, setBookDetails]);
 
   const onError = () => setSrc(DefaultAvatar);
 
-  if (!bookDetails || !props.user) return null;
+  if (!bookDetails || !props.user)
+    return (
+      <Box className={styles.loader}>
+        <DropboxReadsSpinner isLoading={isLoading} />
+      </Box>
+    );
 
   return bookDetails ? (
     <div>
