@@ -6,6 +6,8 @@ export interface GodBookshelf {
   id: string;
   name: string;
   description: string;
+  mainImage?: string;
+  coverImage?: string;
   books?: Book[];
   user: SafeUser;
   tags?: Tag[];
