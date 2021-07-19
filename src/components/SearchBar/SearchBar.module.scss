@@ -1,23 +1,49 @@
 @use '../../theme' as t;
 
-
 .root {
-  width: 100vw;
-  height: t.$search-height;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-
-  padding: 5px 30px;
-
-  flex-wrap: nowrap;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: t.$color-background-main;
+  margin-left: 20px;
 }
 
-.cta {
-  padding: 0px 20px;
-  height: 60px;
-  border-radius: 20px;
-  margin-left: 30px;
-  width: 500px;
+.search {
+  width: 280px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  .text_field {
+    margin-left: 10px;
+  }
+}
+
+.search_grid {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    color: t.$color-gray-light;
+    margin-left: 10px;
+  }
+}
+
+.input {
+  padding: 5px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.result {
+  background-color: t.$color-background-white;
 }

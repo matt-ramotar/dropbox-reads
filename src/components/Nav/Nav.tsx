@@ -1,6 +1,6 @@
-import { faBell, faBook, faCaretDown, faHashtag, faHome, faPlus, faSearch, faSeedling, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faBook, faCaretDown, faHashtag, faHome, faPlus, faSeedling, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Box, Grid, TextField } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import React from "react";
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import logo from "../../images/dropbox-transparent.png";
 import { continueWithGoogle } from "../../lib";
 import SafeUser from "../../types/SafeUser";
 import { GOOGLE_CLIENT_ID } from "../../util/secrets";
+import SearchBar from "../SearchBar";
 import styles from "./Nav.module.scss";
 
 interface ProfileObj {
@@ -41,21 +42,14 @@ export default function Nav(props: Props): JSX.Element {
   return (
     <Grid container className={styles.nav}>
       <Grid container className={styles.left}>
-        <Link to="/">
-          <img src={logo} alt="Dropbox Reads logo" />
-        </Link>
-
-        <Box className={styles.search}>
-          <FontAwesomeIcon icon={faSearch} size="lg" className={styles.icon} />
-          <TextField
-            id="search-bar"
-            placeholder="Search Dropbox Reads"
-            inputProps={{ "aria-label": "search" }}
-            fullWidth
-            InputProps={{ disableUnderline: true }}
-            className={styles.text_field}
-          />
-        </Box>
+        <Grid>
+          <Link to="/">
+            <img src={logo} alt="Dropbox Reads logo" />
+          </Link>
+        </Grid>
+        <Grid>
+          <SearchBar />
+        </Grid>
       </Grid>
 
       <Grid container className={styles.center}>

@@ -81,25 +81,3 @@
     margin-right: 8px;
   }
 }
-
-.search {
-  width: 300px;
-  height: 40px;
-  background-color: t.$color-background-main;
-  border-radius: 20px;
-  padding: 4px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-
-  .icon {
-    color: t.$color-gray-light;
-    margin-left: 10px;
-  }
-
-  .text_field {
-    margin-left: 10px;
-  }
-}

@@ -8,4 +8,6 @@ export const GET_BOOKS = "/books";
 
 export const CREATE_BOOKSHELF = "/bookshelves";
 
+export const SEARCH = "/search";
+
 export const GOOGLE_BOOKS_URL = "https://www.googleapis.com/books/v1/volumes?q=";
