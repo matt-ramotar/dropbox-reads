@@ -36,14 +36,8 @@ export default function Home(props: Props): JSX.Element {
     );
 
   return (
-    // <Grid className={styles.root}>
-    //   {filterBooks(books, Object.keys(filters)).map((book) => (
-    //     <BookCard key={book.id} user={props.user} book={book} />
-    //   ))}
-    // </Grid>
-
     <Grid className={styles.root}>
-      {books.map((book) => (
+      {filterBooks(books, Object.keys(filters)).map((book) => (
         <BookCard key={book.id} user={props.user} book={book} />
       ))}
     </Grid>
