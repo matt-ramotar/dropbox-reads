@@ -18,7 +18,7 @@ export default function Home(props: Props): JSX.Element {
   return (
     <Grid container className={styles.root}>
       <Nav user={props.user} />
-      <SearchResults shouldShow={true} />
+      <SearchResults />
 
       <Box className={styles.actions}>
         <SubmitABookCta user={props.user} />

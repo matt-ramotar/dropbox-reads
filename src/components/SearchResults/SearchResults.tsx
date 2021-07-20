@@ -7,15 +7,11 @@ import { RootState } from "../../store";
 import { Book } from "../../types/Book";
 import styles from "./SearchResults.module.scss";
 
-interface Props {
-  shouldShow: boolean;
-}
-
 interface Matches {
   title?: Book[];
 }
 
-export default function SearchResults(props: Props): JSX.Element | null {
+export default function SearchResults(): JSX.Element | null {
   const [books, setBooks] = useState<Book[] | null>(null);
   const [matchingBooks, setMatchingBooks] = useState<Book[] | null>(null);
 

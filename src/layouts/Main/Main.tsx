@@ -1,6 +1,7 @@
 import loadable from "@loadable/component";
 import { Box, Grid } from "@material-ui/core";
 import Nav from "../../components/Nav";
+import SearchResults from "../../components/SearchResults";
 import { GodBook } from "../../types/GodBook";
 import SafeUser from "../../types/SafeUser";
 import { Tag } from "../../types/Tag";
@@ -18,6 +19,7 @@ export default function Main(props: Props): JSX.Element {
   return (
     <Grid className={styles.root}>
       <Nav user={props.user} />
+      <SearchResults />
 
       <Box className={styles.container}>
         <Box className={styles.main}>
