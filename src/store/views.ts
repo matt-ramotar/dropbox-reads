@@ -3,10 +3,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface Views {
   [view: string]: boolean;
   AddBookshelfDialog: boolean;
+  SearchResultsPopover: boolean;
 }
 
 const initialState: Views = {
   AddBookshelfDialog: false,
+  SearchResultsPopover: false,
 };
 
 const viewsSlice = createSlice({

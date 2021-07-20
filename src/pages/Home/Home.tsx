@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import BookCard from "../../components/BookCard";
 import DropboxReadsSpinner from "../../components/spinners/DropboxReadsSpinner";
-import fetchBooks from "../../lib/fetchBooks";
+import fetchGodBooks from "../../lib/fetchGodBooks";
 import { RootState } from "../../store";
 import { GodBook } from "../../types/GodBook";
 import SafeUser from "../../types/SafeUser";
@@ -20,7 +20,7 @@ export default function Home(props: Props): JSX.Element {
 
   useEffect(() => {
     async function fetchBooksAsync() {
-      const response = await fetchBooks();
+      const response = await fetchGodBooks();
       setBooks(response);
       setIsLoading(false);
     }

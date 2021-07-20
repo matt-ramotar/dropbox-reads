@@ -1,0 +1,24 @@
+@use '../../theme' as t;
+
+.root {
+  position: fixed;
+  top: 60px;
+  left: 120px;
+  width: 295px;
+  background-color: t.$color-background-main;
+  z-index: 10001;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.root_loading {
+  position: fixed;
+  top: 60px;
+  left: 120px;
+  width: 295px;
+  height: 200px;
+  background-color: t.$color-background-main;
+  z-index: 10001;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}

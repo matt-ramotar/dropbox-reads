@@ -5,6 +5,7 @@ export const VALIDATE_TOKEN = "/auth/token/validate";
 
 export const GET_TAGS = "/tags";
 export const GET_BOOKS = "/books";
+export const GET_GOD_BOOKS = "/books/god";
 
 export const CREATE_BOOKSHELF = "/bookshelves";
 

@@ -3,6 +3,7 @@ import logger from "redux-logger";
 import bookFormSlice from "./addBook";
 import authReducer from "./auth";
 import filtersSlice from "./filters";
+import searchSlice from "./search";
 import userFiltersSlice from "./userFilters";
 import viewsSlice from "./views";
 
@@ -12,6 +13,7 @@ const store = configureStore({
     filters: filtersSlice,
     bookForm: bookFormSlice,
     userFilters: userFiltersSlice,
+    search: searchSlice,
     views: viewsSlice,
   },
   middleware: () => getDefaultMiddleware().concat(logger),

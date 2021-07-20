@@ -1,6 +1,7 @@
 import loadable from "@loadable/component";
 import { Box, Grid } from "@material-ui/core";
 import Nav from "../../components/Nav";
+import SearchResults from "../../components/SearchResults/SearchResults";
 import SideNav from "../../components/SideNav/SideNav";
 import SubmitABookCta from "../../components/SubmitABookCta";
 import SafeUser from "../../types/SafeUser";
@@ -12,20 +13,15 @@ interface Props {
 }
 
 export default function Home(props: Props): JSX.Element {
-  // const [books, setBooks] = useState<GodBook[]>(props.books);
   const Page = loadable(() => import(`../../pages/${props.pageName}`));
-
-  // function handleSearch(books: GodBook[]) {
-  //   setBooks(books);
-  // }
 
   return (
     <Grid container className={styles.root}>
       <Nav user={props.user} />
+      <SearchResults shouldShow={true} />
 
       <Box className={styles.actions}>
         <SubmitABookCta user={props.user} />
-        {/* <SearchBar handleSearch={handleSearch} /> */}
       </Box>
 
       <Box className={styles.container}>

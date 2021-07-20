@@ -1,12 +1,12 @@
 import axios, { AxiosResponse } from "axios";
-import { GodBook } from "../types/GodBook";
+import { Book } from "../types/Book";
 import { GET_BOOKS, VERSION } from "../util/endpoints";
 import { API_URL } from "../util/secrets";
 
-export default async function fetchBooks(): Promise<GodBook[]> {
+export default async function fetchBooks(): Promise<Book[]> {
   const response: AxiosResponse = await axios.get(buildUrl());
 
-  const data: GodBook[] = response.data;
+  const data: Book[] = response.data;
 
   return data;
 }
