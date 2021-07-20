@@ -18,10 +18,10 @@
 
   position: relative;
   width: 428px;
-  height: 540px;
+  height: 654px;
 
-  background: #3300ff;
-  opacity: 0.1;
+  background: t.$color-paper;
+
   border-radius: 25px;
 }
 
@@ -29,15 +29,15 @@
   position: absolute;
   flex-direction: column;
   align-content: space-around;
-  background: #3300ff;
-  opacity: 0.65;
+  background: t.$color-background-accent;
+
   border-radius: 25px;
   color: #ffffff;
 
   left: 70px;
   top: 80px;
-  width: 350px;
-  height: 450px;
+  width: 360px;
+  height: 312px;
   padding: 30px;
 
   img {

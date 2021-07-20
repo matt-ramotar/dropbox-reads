@@ -1,5 +1,9 @@
 @use '../../theme' as t;
 
+.root {
+  min-height: 100vh;
+}
+
 .header {
   position: absolute;
   left: 0;

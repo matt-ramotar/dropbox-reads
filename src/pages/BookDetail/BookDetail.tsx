@@ -4,8 +4,6 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { BookComments } from "../../components/BookDetail/BookComments";
 import { BookSummary } from "../../components/BookDetail/BookSummary";
-import { Upvotes } from "../../components/BookDetail/Upvotes";
-import BookTagChip from "../../components/BookTagChip";
 import DropboxReadsSpinner from "../../components/spinners/DropboxReadsSpinner";
 import fetchGodBook from "../../lib/fetchGodBook";
 import { GodBook } from "../../types/GodBook";
@@ -44,9 +42,9 @@ export default function BookDetail(props: Props): JSX.Element | null {
     );
 
   return bookDetails ? (
-    <div>
+    <div className={styles.root}>
       <div className={styles.sidebar}>
-        <Upvotes bookUpvotes={bookDetails.bookUpvotes ? bookDetails.bookUpvotes : []} />
+        {/* <Upvotes bookUpvotes={bookDetails.bookUpvotes ? bookDetails.bookUpvotes : []} /> */}
         <BookSummary bookDetails={bookDetails} />
       </div>
       <div className={styles.main}>
@@ -58,10 +56,6 @@ export default function BookDetail(props: Props): JSX.Element | null {
           </Link>
         </div>
         <BookComments comments={bookDetails.bookComments} bookId={id} user={props.user} />
-      </div>
-
-      <div className={styles.bookTags}>
-        <BookTagChip key={bookDetails.id} user={bookDetails.userAddedBy} book={bookDetails} />
       </div>
     </div>
   ) : null;
