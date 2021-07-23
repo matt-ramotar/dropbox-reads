@@ -25,6 +25,32 @@
   }
 }
 
+.root_selected {
+  width: 200px;
+  height: 130px;
+  background-color: t.$color-fill-brand;
+  color: t.$color-background-main;
+  margin-right: 20px;
+  margin-top: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+
+  img {
+    position: absolute;
+    height: 120px;
+    width: 80px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    top: -10px;
+    left: 5px;
+    margin-right: 0px;
+  }
+}
+
 .details {
   position: absolute;
   left: 20px;
@@ -61,4 +87,9 @@
 
 .button {
   padding: 0px;
+  margin: 0px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  text-align: left;
 }

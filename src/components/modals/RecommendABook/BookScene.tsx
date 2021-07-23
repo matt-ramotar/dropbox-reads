@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBooksFromGoogleBooksApi from "../../../lib/fetchBooksFromGoogleBooksApi";
 import { RootState } from "../../../store";
-import { setBook } from "../../../store/bookRec";
+import { setBook, setBooks } from "../../../store/bookRec";
 import { GoogleBook } from "../../../types/GoogleBook";
 import GoogleBookCard from "./GoogleBookCard";
 import styles from "./RecommendABook.module.scss";
@@ -14,11 +14,12 @@ export default function BookScene(): JSX.Element {
   const titleRedux = useSelector((state: RootState) => state.bookRec.title);
   const authorNameRedux = useSelector((state: RootState) => state.bookRec.authorName);
   const bookRedux = useSelector((state: RootState) => state.bookRec.book);
+  const booksRedux = useSelector((state: RootState) => state.bookRec.books);
 
   const [bookLocal, setBookLocal] = useState(bookRedux);
-  const [googleBooks, setGoogleBooks] = useState<GoogleBook[] | null>(null);
+  const [googleBooks, setGoogleBooks] = useState<GoogleBook[] | undefined>(booksRedux);
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(Boolean(!googleBooks));
 
   useEffect(() => {
     if (bookLocal) dispatch(setBook(bookLocal));
@@ -28,9 +29,10 @@ export default function BookScene(): JSX.Element {
     async function fetchBooksFromGoogleBooksApiAsync() {
       const googleBooksResponse = await fetchBooksFromGoogleBooksApi(titleRedux!, authorNameRedux);
       setGoogleBooks(googleBooksResponse);
+      dispatch(setBooks(googleBooksResponse));
       setIsLoading(false);
     }
-    if (titleRedux) fetchBooksFromGoogleBooksApiAsync();
+    if (titleRedux && !googleBooks) fetchBooksFromGoogleBooksApiAsync();
   }, [titleRedux, authorNameRedux]);
 
   return (
