@@ -1,0 +1,27 @@
+@use '../../../../theme' as t;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 25%;
+}
+
+.progressBar {
+  width: 100%;
+  height: 12px;
+  background-color: t.$color-fill-brand-tint-2;
+  margin-bottom: 5px;
+}
+
+.progress {
+  background-color: t.$color-fill-success;
+  height: 12px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.heading {
+  color: t.$color-gray-light;
+}

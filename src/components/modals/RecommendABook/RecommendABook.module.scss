@@ -1,0 +1,147 @@
+@use '../../../theme' as t;
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.root__modal {
+  width: 80vw;
+  height: 80vh;
+  background-color: t.$color-background-main;
+  outline: none;
+  border-radius: 5px;
+  color: t.$color-black;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.main__box--label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 5%;
+}
+
+.root__question {
+  margin-left: 20px;
+  width: 90%;
+}
+
+.prompt {
+  color: t.$color-black;
+}
+
+.textField {
+  width: 45%;
+}
+
+.main__textField--left {
+  margin-top: 10px;
+  margin-right: 10px;
+  min-width: 45%;
+}
+
+.main__textField--right {
+  margin-top: 10px;
+  margin-left: 10px;
+  min-width: 45%;
+}
+
+.main__textField {
+  margin-top: 10px;
+  min-width: 90%;
+}
+
+.controls__grid {
+  position: absolute;
+  bottom: 30px;
+}
+
+.controls__icon--left {
+  color: t.$color-fill-brand-tint-2;
+}
+
+.controls__icon--right {
+  color: t.$color-fill-brand-tint-2;
+}
+
+.controls__button--left {
+  background-color: t.$color-fill-brand-tint-1;
+  min-height: 40px;
+  max-height: 40px;
+  max-width: 40px;
+  min-width: 40px;
+  border-radius: 0px;
+  border-right: 1px solid t.$color-fill-brand-tint-2;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.controls__button--right {
+  background-color: t.$color-fill-brand-tint-1;
+  min-height: 40px;
+  max-height: 40px;
+  max-width: 40px;
+  min-width: 40px;
+  border-radius: 0px;
+  border-left: 1px solid t.$color-fill-brand-tint-2;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.controls__buttons {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.select {
+  margin-top: 10px;
+  width: 90%;
+}
+
+.chip {
+  background-color: t.$color-fill-brand-tint-2;
+  color: white;
+}
+
+.product__button--isSelected {
+  margin-top: 10px;
+  border: 2px solid t.$color-fill-alert;
+  color: t.$color-fill-alert;
+  font-weight: bold;
+}
+
+.product__button {
+  margin-top: 10px;
+}
+
+.submit__grid {
+  margin-top: 60px;
+  margin-left: 15%;
+}
+
+.submit__button {
+  background-color: t.$color-fill-success;
+}
+
+.success__grid {
+  width: 90%;
+}
+
+.success__text {
+  margin: 20px;
+  text-align: center;
+}
+
+.books {
+  margin-top: 20px;
+}

@@ -1,5 +1,6 @@
 import loadable from "@loadable/component";
 import { Box, Grid } from "@material-ui/core";
+import RecommendABook from "../../components/modals/RecommendABook";
 import Nav from "../../components/Nav";
 import SearchResults from "../../components/SearchResults/SearchResults";
 import SideNav from "../../components/SideNav/SideNav";
@@ -28,6 +29,7 @@ export default function Home(props: Props): JSX.Element {
         <SideNav user={props.user} />
         <Box className={styles.main}>
           <Page user={props.user} />
+          <RecommendABook user={props.user} />
         </Box>
       </Box>
     </Grid>
