@@ -67,33 +67,33 @@
 }
 
 .controls__icon--left {
-  color: t.$color-fill-brand-tint-2;
+  color: t.$color-fill-brand;
 }
 
 .controls__icon--right {
-  color: t.$color-fill-brand-tint-2;
+  color: t.$color-fill-brand;
 }
 
 .controls__button--left {
-  background-color: t.$color-fill-brand-tint-1;
+  background-color: t.$color-gray-lighter;
   min-height: 40px;
   max-height: 40px;
   max-width: 40px;
   min-width: 40px;
   border-radius: 0px;
-  border-right: 1px solid t.$color-fill-brand-tint-2;
+  border-right: 1px solid t.$color-fill-brand;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
 .controls__button--right {
-  background-color: t.$color-fill-brand-tint-1;
+  background-color: t.$color-gray-lighter;
   min-height: 40px;
   max-height: 40px;
   max-width: 40px;
   min-width: 40px;
   border-radius: 0px;
-  border-left: 1px solid t.$color-fill-brand-tint-2;
+  border-left: 1px solid t.$color-fill-brand;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -109,7 +109,7 @@
 }
 
 .chip {
-  background-color: t.$color-fill-brand-tint-2;
+  background-color: t.$color-fill-brand;
   color: white;
 }
 
