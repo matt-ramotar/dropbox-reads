@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import getNextQuestion from "../../../helpers/getNextScene";
 import getNumBookRecScenesCompleted from "../../../helpers/getNumBookRecScenesCompleted";
 import getPrevQuestion from "../../../helpers/getPrevScene";
+import handleRecommendABook from "../../../lib/handleRecommendABook";
 import { RootState } from "../../../store";
+import { setBookshelfBook } from "../../../store/bookRec";
 import { hideView, setCurrentScene } from "../../../store/views";
 import SafeUser from "../../../types/SafeUser";
 import { RecommendABookModal } from "../../../util/views";
@@ -64,7 +66,13 @@ export default function RecommendABook(props: Props): JSX.Element {
   };
 
   const handleSubmit = () => {
-    console.log("submit");
+    async function handleRecommendABookAsync() {
+      const bookshelfBook = await handleRecommendABook(bookRec.book!, bookRec.reason!, props.user.id);
+      dispatch(setCurrentScene(5));
+      dispatch(setBookshelfBook(bookshelfBook));
+    }
+
+    if (bookRec.book && bookRec.reason) handleRecommendABookAsync();
   };
 
   return (

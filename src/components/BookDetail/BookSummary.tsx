@@ -47,7 +47,7 @@ export const BookSummary: FC<BookSummaryProps> = ({ bookDetails }) => {
             {bookDetails.title}
           </Typography>
           <Typography variant="h6" className={styles.author}>
-            {bookDetails.author?.name}
+            {bookDetails.authors![0].name}
           </Typography>
         </Grid>
 

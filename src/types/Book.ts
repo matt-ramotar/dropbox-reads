@@ -4,7 +4,7 @@ export interface Book {
   title: string;
   description: string;
   coverImage?: string;
-  authorId: string;
+  authorIds: string[];
   bookTagIds?: string[];
   userAddedById: string;
   bookshelfIds?: string[];

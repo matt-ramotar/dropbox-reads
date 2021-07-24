@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import AddBookshelfDialog from "../../components/AddBookshelfDialog";
+import AddBookshelfDialog from "../../components/dialogs/AddBookshelfDialog";
 import { fetchUserProfile } from "../../lib";
 import { hideView, showView } from "../../store/views";
 import { Bookshelf } from "../../types/Bookshelf";

@@ -1,7 +1,7 @@
 import { Author } from "./Author";
 import { Bookshelf } from "./Bookshelf";
-import { GodBookTag } from "./GodBookTag";
 import { BookUpvote } from "./BookUpvote";
+import { GodBookTag } from "./GodBookTag";
 import { GodComment } from "./GodComment";
 import { Review } from "./Review";
 import SafeUser from "./SafeUser";
@@ -12,7 +12,7 @@ export interface GodBook {
   title: string;
   description: string;
   coverImage?: string;
-  author?: Author;
+  authors?: Author[];
   bookTags?: GodBookTag[];
   userAddedBy: SafeUser;
   bookshelves?: Bookshelf[];

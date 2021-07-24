@@ -13,9 +13,6 @@ interface Props {
 }
 
 export default function BookCard(props: Props): JSX.Element {
-  const description =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
-
   return (
     <Grid className={styles.root} component={Link} to={`/books/${props.book.id}`}>
       <Box className={styles.top_box}>
@@ -34,7 +31,7 @@ export default function BookCard(props: Props): JSX.Element {
         <Typography variant="h5">{props.book.title}</Typography>
 
         <Typography variant="h6" className={styles.author}>
-          {props.book.author!.name ?? `${props.book.author!.firstName} ${props.book.author!.lastName}`}
+          {props.book.authors ? props.book.authors[0].name : `${props.book.authors![0].firstName} ${props.book.authors![0].lastName}`}
         </Typography>
 
         <Box className={styles.user_details}>

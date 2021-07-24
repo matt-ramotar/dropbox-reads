@@ -5,7 +5,6 @@ import HomeLayout from "./layouts/Home";
 import MainLayout from "./layouts/Main";
 import SplashLayout from "./layouts/Splash";
 import {
-  AddBookFormPage,
   BookDetailPage,
   BookshelfDetailPage,
   BookshelvesPage,
@@ -67,10 +66,6 @@ const routes = (isLoggedIn, user) => [
   {
     path: "/",
     element: !isLoggedIn ? <SplashLayout pageName={SplashPage} /> : <Navigate to="/home" />,
-  },
-  {
-    path: "add-book",
-    element: isLoggedIn ? <MainLayout user={user} pageName={AddBookFormPage} /> : <Navigate to="/" />,
   },
 ];
 

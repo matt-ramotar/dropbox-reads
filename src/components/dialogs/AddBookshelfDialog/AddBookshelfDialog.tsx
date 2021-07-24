@@ -8,12 +8,12 @@ import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import createBookshelf from "../../lib/createBookshelf";
-import { RootState } from "../../store";
-import { hideView } from "../../store/views";
-import SafeUser from "../../types/SafeUser";
-import { Tag } from "../../types/Tag";
-import { AddBookshelfDialog as AddBookshelfDialogId } from "../../util/views";
+import createBookshelf from "../../../lib/createBookshelf";
+import { RootState } from "../../../store";
+import { hideView } from "../../../store/views";
+import SafeUser from "../../../types/SafeUser";
+import { Tag } from "../../../types/Tag";
+import { AddBookshelfDialog as AddBookshelfDialogId } from "../../../util/views";
 
 interface Props {
   user: SafeUser;

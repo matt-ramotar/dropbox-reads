@@ -8,6 +8,11 @@ export const GET_BOOKS = "/books";
 export const GET_GOD_BOOKS = "/books/god";
 
 export const CREATE_BOOKSHELF = "/bookshelves";
+export const CREATE_BOOKSHELF_BOOK = "/bookshelfbooks";
+
+export const UPSERT_AUTHOR = "/authors";
+export const UPSERT_BOOK = "/books";
+export const UPSERT_TAG = "/tags";
 
 export const SEARCH = "/search";
 

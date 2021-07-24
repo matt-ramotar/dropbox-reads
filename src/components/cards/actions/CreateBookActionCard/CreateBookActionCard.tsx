@@ -64,7 +64,7 @@ export default function CreateBookActionCard(props: Props): JSX.Element | null {
 
           <Box className={styles.otherUserInfo}>
             <Typography className={styles.text_dynamic}>{`${godBook.title}`}</Typography>
-            <Typography>{godBook.author?.name}</Typography>
+            <Typography>{godBook.authors ? godBook.authors[0].name : null}</Typography>
           </Box>
         </Box>
 
