@@ -19,4 +19,5 @@ export interface GodBook {
   reviews?: Review[];
   bookUpvotes?: BookUpvote[];
   bookComments?: GodComment[];
+  dropboxPaperUrl?: string;
 }

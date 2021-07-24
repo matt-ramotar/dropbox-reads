@@ -40,7 +40,10 @@ export const BookSummary: FC<BookSummaryProps> = ({ bookDetails }) => {
         </Box>
         {/*TODO: have fallback default book pic*/}
         <Grid container className={styles.cover}>
-          <img src={bookDetails.coverImage} alt={"Book Cover"} />
+          <img
+            src={`https://books.google.com/books/content?id=${bookDetails.googleId}&printsec=frontcover&img=1&zoom=4&source=gbs_api`}
+            alt={"Book Cover"}
+          />
         </Grid>
         <Grid className={styles.details}>
           <Typography variant="h4" className={styles.title}>

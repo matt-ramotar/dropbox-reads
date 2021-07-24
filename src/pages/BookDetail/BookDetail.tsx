@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { BookComments } from "../../components/BookDetail/BookComments";
 import { BookSummary } from "../../components/BookDetail/BookSummary";
 import DropboxReadsSpinner from "../../components/spinners/DropboxReadsSpinner";
+import AmazonLogo from "../../images/amazon.png";
+import PaperLogo from "../../images/paper.png";
+import SlackLogo from "../../images/slack.png";
 import fetchGodBook from "../../lib/fetchGodBook";
 import { GodBook } from "../../types/GodBook";
 import SafeUser from "../../types/SafeUser";
@@ -48,8 +51,21 @@ export default function BookDetail(props: Props): JSX.Element | null {
         <BookSummary bookDetails={bookDetails} />
       </div>
       <div className={styles.main}>
+        <Box className={styles.integrations}>
+          <a target="_blank" href={bookDetails.dropboxPaperUrl ?? ""} rel="noreferrer">
+            <img src={PaperLogo} alt="Dropbox Paper" />
+          </a>
+
+          <a target="_blank" href={"https://dropbox.slack.com/archives/C026MQ0G868"} rel="noreferrer">
+            <img src={SlackLogo} alt="Slack" />
+          </a>
+
+          <a target="_blank" href={"https://dropbox.slack.com/archives/C026MQ0G868"} rel="noreferrer">
+            <img src={AmazonLogo} alt="Amazon" />
+          </a>
+        </Box>
         <div className={styles.recc}>
-          <Typography variant="h5">Recommended by</Typography>
+          <Typography variant="h5">Recommended By</Typography>
 
           <Link to={`/${props.user.username}`}>
             <img src={src!} onError={onError} alt="Recommended By" />

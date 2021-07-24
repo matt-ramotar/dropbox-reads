@@ -2,7 +2,7 @@ import { Box, Button, Grid, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store";
-import { resetBook, setBook } from "../../../../store/bookRec";
+import { resetBook, setGoogleBook } from "../../../../store/bookRec";
 import { GoogleBook } from "../../../../types/GoogleBook";
 import styles from "./GoogleBookCard.module.scss";
 
@@ -16,7 +16,7 @@ export default function GoogleBookCard(props: Props): JSX.Element {
   const [thumbnailType, setThumbnailType] = useState<string | null>(null);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
-  const googleBookRedux = useSelector((state: RootState) => state.bookRec.book);
+  const googleBookRedux = useSelector((state: RootState) => state.bookRec.googleBook);
   const [isSelected, setIsSelected] = useState(googleBookRedux?.id === props.book.id);
 
   function getCoverImageSrc(): string {
@@ -36,7 +36,7 @@ export default function GoogleBookCard(props: Props): JSX.Element {
       dispatch(resetBook());
       setIsSelected(false);
     } else {
-      dispatch(setBook(props.book));
+      dispatch(setGoogleBook(props.book));
       setIsSelected(true);
     }
   };

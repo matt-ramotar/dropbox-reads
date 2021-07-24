@@ -11,4 +11,5 @@ export interface Book {
   reviewIds?: string[];
   bookUpvoteIds?: string[];
   bookCommentIds?: string[];
+  dropboxPaperUrl?: string;
 }

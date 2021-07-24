@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBooksFromGoogleBooksApi from "../../../lib/fetchBooksFromGoogleBooksApi";
 import { RootState } from "../../../store";
-import { setBook, setBooks } from "../../../store/bookRec";
+import { setBooks, setGoogleBook } from "../../../store/bookRec";
 import { GoogleBook } from "../../../types/GoogleBook";
 import GoogleBookCard from "./GoogleBookCard";
 import styles from "./RecommendABook.module.scss";
@@ -13,16 +13,16 @@ export default function BookScene(): JSX.Element {
 
   const titleRedux = useSelector((state: RootState) => state.bookRec.title);
   const authorNameRedux = useSelector((state: RootState) => state.bookRec.authorName);
-  const bookRedux = useSelector((state: RootState) => state.bookRec.book);
+  const googleBookRedux = useSelector((state: RootState) => state.bookRec.googleBook);
   const booksRedux = useSelector((state: RootState) => state.bookRec.books);
 
-  const [bookLocal, setBookLocal] = useState(bookRedux);
+  const [bookLocal, setBookLocal] = useState(googleBookRedux);
   const [googleBooks, setGoogleBooks] = useState<GoogleBook[] | undefined>(booksRedux);
 
   const [isLoading, setIsLoading] = useState(Boolean(!googleBooks));
 
   useEffect(() => {
-    if (bookLocal) dispatch(setBook(bookLocal));
+    if (bookLocal) dispatch(setGoogleBook(bookLocal));
   }, [bookLocal]);
 
   useEffect(() => {

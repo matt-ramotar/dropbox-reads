@@ -49,7 +49,6 @@ export default function Profile(props: Props): JSX.Element {
   useEffect(() => {
     async function fetchProfileFeedAsync() {
       const response = await fetchFeed(godUser!.id, FeedType.ProfileFeed, offset);
-
       setGodActions(response);
       setIsLoading(false);
     }

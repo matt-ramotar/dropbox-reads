@@ -36,17 +36,16 @@
 
 .recc {
   margin-left: 80px;
-  font-family: sans-serif;
-  margin-top: 25px;
+  font-family: Roboto;
+  margin-top: 20px;
 
   img {
-    height: 120px;
-    width: 120px;
-    border-radius: 25px;
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+    border-radius: 20px;
     object-fit: cover;
     object-position: top;
-    align-self: center;
-    margin-bottom: 15px;
   }
 }
 
@@ -66,4 +65,15 @@
   margin-bottom: 10px;
   margin-left: 20px;
   z-index: 2;
+}
+
+.integrations {
+  margin-left: 80px;
+  margin-top: 25px;
+
+  img {
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+  }
 }

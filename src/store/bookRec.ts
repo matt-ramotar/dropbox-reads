@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Book } from "../types/Book";
 import { BookshelfBook } from "../types/BookshelfBook";
 import { GoogleBook } from "../types/GoogleBook";
 
 export interface BookRec {
   title?: string;
   authorName?: string;
-  book?: GoogleBook;
+  book?: Book;
+  googleBook?: GoogleBook;
   books?: GoogleBook[];
   reason?: string;
   bookshelfBook?: BookshelfBook;
@@ -29,7 +31,10 @@ const bookRecSlice = createSlice({
     resetAuthorName(state) {
       if (state.authorName) delete state.authorName;
     },
-    setBook(state, action: PayloadAction<GoogleBook>) {
+    setGoogleBook(state, action: PayloadAction<GoogleBook>) {
+      state.googleBook = action.payload;
+    },
+    setBook(state, action: PayloadAction<Book>) {
       state.book = action.payload;
     },
     setBooks(state, action: PayloadAction<GoogleBook[]>) {
@@ -39,7 +44,7 @@ const bookRecSlice = createSlice({
       state.bookshelfBook = action.payload;
     },
     resetBook(state) {
-      if (state.book) delete state.book;
+      if (state.googleBook) delete state.googleBook;
     },
     resetBooks(state) {
       if (state.books) delete state.books;
@@ -56,6 +61,7 @@ const bookRecSlice = createSlice({
 export const {
   setTitle,
   setAuthorName,
+  setGoogleBook,
   setBook,
   setBooks,
   setReason,
