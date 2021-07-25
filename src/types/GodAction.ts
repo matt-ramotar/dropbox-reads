@@ -3,6 +3,7 @@ import { Bookshelf } from "./Bookshelf";
 import { BookTag } from "./BookTag";
 import { Comment } from "./Comment";
 import { CommentReaction } from "./CommentReaction";
+import { GodActionReaction } from "./GodActionReaction";
 import { GodUser } from "./GodUser";
 import { Review } from "./Review";
 import { ReviewReaction } from "./ReviewReaction";
@@ -23,4 +24,6 @@ export interface GodAction {
   otherComment?: Comment;
   reviewReaction?: ReviewReaction;
   commentReaction?: CommentReaction;
+  actionReaction?: GodActionReaction;
+  actionReactions?: GodActionReaction[];
 }

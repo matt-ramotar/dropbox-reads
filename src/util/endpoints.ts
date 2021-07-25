@@ -7,6 +7,7 @@ export const GET_TAGS = "/tags";
 export const GET_BOOKS = "/books";
 export const GET_GOD_BOOKS = "/books/god";
 
+export const CREATE_ACTION_REACTION = "/actionreactions";
 export const CREATE_BOOKSHELF = "/bookshelves";
 export const CREATE_BOOKSHELF_BOOK = "/bookshelfbooks";
 
